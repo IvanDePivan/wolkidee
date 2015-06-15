@@ -16,6 +16,7 @@ body {
 
 .inputContainer {
 	height:100%;
+    z-index:0;
 }
 
 .bigTextInput {
@@ -23,6 +24,33 @@ body {
 	width:100%;
 	font-size: 20px;
 	max-width:100%;
+}
+
+.imageButtonGlyph {
+    font-size: 40px;
+}
+
+.roundInputButton {
+    width: 100px;
+    height: 66px;
+    margin-left: 20px;
+    float:right;
+}
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
 }
 
 .center{
@@ -60,14 +88,17 @@ body {
 	width:60%;
 	height:60%;
 	margin:auto;
+    z-index:999;
 }
 
 .avansLogo {
 	position: absolute;
 	right: 30px;
 	bottom: 30px;
+    width:15%;
 	text-align: right;
 }
+
 .avansLogo .avansLogoImage {
-	width:60%; height:auto;
+	width:100%; height:auto;
 }
