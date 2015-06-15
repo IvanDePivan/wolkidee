@@ -1,0 +1,28 @@
+<div class="navbar navbar-default" >
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">MahJong</a>
+    </div>
+    <div class="navbar-collapse collapse navbar-responsive-collapse">
+        <ul class="nav navbar-nav">
+            <!-- <li ng-class="{disabled: !loggedIn}"><a href="{{loggedIn ? '/games' : '#'}}">Games</a></li> -->
+            <li class="dropdown" ng-class="{disabled: !loggedIn}">
+                <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">Games <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{loggedIn ? '/games/open' : '#'}}">Open</a></li>
+                    <li><a href="{{loggedIn ? '/games/joinable' : '#'}}">Joinable</a></li>
+                    <li><a href="{{loggedIn ? '/games/playing' : '#'}}">Playing</a></li>
+                    <li><a href="{{loggedIn ? '/games' : '#'}}">All</a></li>
+
+                </ul>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+        <li><a ng-href="{{(loggedIn ? '/logout' : 'http://mahjongmayhem.herokuapp.com/auth/avans?callbackUrl=http://localhost:3000/callback')}}">{{(loggedIn ? 'Logout' : 'Login')}}</a></li>
+        </ul>
+    </div>
+</div>
