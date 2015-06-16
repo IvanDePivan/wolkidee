@@ -1,0 +1,40 @@
+<div id="outputContainer">
+	<div id="testDiv" class="center">
+	</div>
+</div>
+
+
+<video id="fullScreen" loop autoplay>
+  <source src="videos/wolken_1080/wolken_1080.mp4" type="video/mp4">
+  <source src="videos/wolken_1080/wolken_1080.webm" type="video/webm">
+  <source src="videos/wolken_1080/wolken_1080.ogv" type="video/ogv">
+  Your browser does not support HTML5 video.
+</video>
+
+<div class="avansLogo">
+	<img class="avansLogoImage" src="img/avans_logo.png">
+</div>
+
+<script type="text/javascript">
+	$VideoElement = $("#fullScreen"); //Cache Jquery reference of this
+	var iOriginalVideoHeight =  $VideoElement.videoHeight;
+	var iCurrentVideoHeight = $VideoElement.height();
+	var iVideoContainerHeight = $VideoElement.parent().height();
+	var iCurrentScale = iOriginalVideoHeight/iCurrentVideoHeight;
+	var iScaleY = (iVideoContainerHeight / iOriginalVideoHeight)*iCurrentScale;
+
+
+	//Important to note: Set the origin to the top left corner (0% 0%), or else the position of the video goes astray
+	 $VideoElement.css({
+	    "transform-origin": "0% 0%",
+	    "transform":"scaleY(" + iScaleY +")",
+	    "-ms-transform-origin" : "0% 0% ", /* IE 9 */
+	    "-ms-transform":"scaleY(" + iScaleY +")", /* IE 9 */
+	    "-moz-transform-origin" : "0% 0%", /* Firefox */
+	    "-moz-transform":"scaleY(" + iScaleY +")", /* Firefox */
+	    "-webkit-transform-origin": "0% 0%", /* Safari and Chrome */
+	    "-webkit-transform":"scaleY(" + iScaleY +")", /* Safari and Chrome */
+	    "-o-transform-origin":"0% 0%", /* Opera */
+	    "-o-transform":"scaleY(" + iScaleY +")" /* Opera */
+	 });
+</script>

@@ -16,6 +16,11 @@ angular.module("wolkidee").config(function($urlRouterProvider, $stateProvider, $
             url: '/input',
             templateUrl: 'client/wolkidee/views/input.ng.html',
             controller: 'InputCtrl'
+        })
+        .state('output', {
+            url: '/output',
+            templateUrl: 'client/wolkidee/views/output.ng.html',
+            controller: 'OutputCtrl'
         });
 
     $urlRouterProvider.otherwise("/");
