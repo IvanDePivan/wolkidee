@@ -32,7 +32,22 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope){
 			errorPlaceholder: "De wens, bericht, anekdote of groet moet meer dan 2 karakters bevatten!"
 		})
 		if(good == true) {
-			console.log("Dikke prima");
+			swal({   
+				title: "Je quote zal er zo uit zien:",   
+				text: "A custom <span style='color:#F8BB86'>html<span> message. <p>Is dit goed?</p>",   
+				html: true, 
+				showCancelButton: true,   
+				confirmButtonColor: "#337ab7",   
+				confirmButtonText: "Ja, verstuur maar!",   
+				cancelButtonText: "Nee!",   
+				closeOnConfirm: false,   closeOnCancel: false 
+			}, function(isConfirm){   
+					if (isConfirm) {     
+						swal("Deleted!", "Your imaginary file has been deleted.", "success");   
+					} else {    
+					 	swal("Cancelled", "Your imaginary file is safe :)", "error"); 
+					} 
+				});
 		}
 	}
 
