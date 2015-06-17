@@ -1,16 +1,16 @@
 <div class="inputContainer center" style="height: 100%;">
 	<div class="inputCenter">
 		<form style="height: 100%;">
-		  <div class="form-group">
+		  <div id="nameFormGroup" class="form-group">
 		    <input id="nameInput" type="text" class="form-control input-lg myInput" placeholder='Voor en achternaam'>
 		  </div>
-		  <div class="form-group">
-		    <input type="text" class="form-control input-lg myInput" placeholder='Titel bijvoorbeeld "Dag Avans!"'>
+		  <div id="titleFormGroup" class="form-group">
+		    <input id="titleInput" type="text" class="form-control input-lg myInput" placeholder='Titel, bijvoorbeeld "Dag Avans!"'>
 		  </div>
-		  <div class="form-group" style="height: 50%;">
-		    <textarea type="text" class="form-control bigTextInput myInput" placeholder="Je wens, bericht, anekdote of groet."></textarea>
+		  <div id="quoteFormGroup" class="form-group" style="height: 50%;">
+		    <textarea id="quoteInput" type="text" class="form-control bigTextInput myInput" placeholder="Je wens, bericht, anekdote of groet."></textarea>
 		  </div>
-		  <div class="form-group">
+		  <div class="form-group ">
 		  	<button type="button" ng-click="ticButtonClick()" class="btn btn-default btn-lg roundInputButton">
 			  <span class="glyphicon glyphicon-ok imageButtonGlyph" aria-hidden="true"></span>
 			</button>
@@ -47,7 +47,6 @@
 
 	}).blur(function(){
 		document.activeElement.blur();
-    	$("input").blur();
 	});
 </script>
 
