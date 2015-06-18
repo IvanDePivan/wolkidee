@@ -3,9 +3,12 @@ angular.module('wolkidee.controllers', []).controller('HomeCtrl', function($scop
 
   	    $('.grid').isotope({
   	    	percentPosition: true,
-    itemSelector: '.grid-item',
+    		itemSelector: '.grid-item',
 		    masonry: {
 		    	columnWidth: 0
 		    }
-  });
+  		});
+
+  		$scope.quotes = $meteor.collection(Quotes);
+		console.log($scope.quotes);
 });
