@@ -19,6 +19,13 @@ body {
     z-index:0;
 }
 
+.grid-item-swal {
+    width:260px;
+    height:auto;
+    margin:auto;
+    border-color: hsla(0, 0%, 0%, 0.7);
+}
+
 .bigTextInput {
 	height: 100% !important;
 	width:100%;

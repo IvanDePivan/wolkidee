@@ -1,4 +1,5 @@
 angular.module('wolkidee.controllers').controller('InputCtrl', function($scope){
+
 	$scope.ticButtonClick = function(){
 		var name = $("#nameInput").val();
 		var title = $("#titleInput").val();
@@ -10,8 +11,10 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope){
 			fieldToCheck: name,
 			inputId: "#nameInput",
 			formGroupId: "#nameFormGroup",
+			prettyName: "naam",
+			maxCharacters: "20",
 			defaultPlaceholder: "Voor en achternaam!",
-			errorPlaceholder: "De voor en achternaam moet in totaal meer dan 2 karakters bevatten!"
+			errorPlaceholder: "De voor en achternaam moet tussen 2 en 20 karakters bevatten!"
 		})
 
 		//Check title validity
@@ -19,8 +22,10 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope){
 			fieldToCheck: title,
 			inputId: "#titleInput",
 			formGroupId: "#titleFormGroup",
+			prettyName: "title",
+			maxCharacters: "20",
 			defaultPlaceholder: 'Titel, bijvoorbeeld "Dag Avans!"',
-			errorPlaceholder: "De titel moet meer dan 2 karakters bevatten!"
+			errorPlaceholder: "De titel moet tussen 2 en 20 karakters bevatten!"
 		})
 
 		//Check quote validity
@@ -28,13 +33,33 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope){
 			fieldToCheck: quote,
 			inputId: "#quoteInput",
 			formGroupId: "#quoteFormGroup",
+			prettyName: "quote",
+			maxCharacters: "400",
 			defaultPlaceholder: "Je wens, bericht, anekdote of groet.",
-			errorPlaceholder: "De wens, bericht, anekdote of groet moet meer dan 2 karakters bevatten!"
+			errorPlaceholder: "De wens, bericht, anekdote of groet moet tussen 2 en 400 karakters bevatten!"
 		})
 		if(good == true) {
+			var imageSource;
+			var images = document.getElementById("uploadBtn").files
+				if (images && images[0]) {
+			    var reader = new FileReader();
+			    reader.onload = function (e) {
+			      $('#showChosenImage')
+			        .attr('src', e.target.result)
+			        .show();
+			    };
+			    reader.readAsDataURL(images[0]);
+			}
+			var quoteTemplate = '<div class="grid-item-swal thumbnail">'
+			quoteTemplate += '<img id="showChosenImage" src="http://placehold.it/260x130/EEE" style="height: 130px; overflow:auto;">'
+			quoteTemplate += '<div class="caption"><h4>' + name + '</h4><h4>' + title +'</h4>'
+			quoteTemplate += '<p>' + quote + '</p></div>'
+			quoteTemplate += '</div><br />'
+			quoteTemplate += '<p style="color: black;">Is dit goed?</p><br />'
+			console.log("showSwall");
 			swal({   
 				title: "Je quote zal er zo uit zien:",   
-				text: "A custom <span style='color:#F8BB86'>html<span> message. <p>Is dit goed?</p>",   
+				text: quoteTemplate,   
 				html: true, 
 				showCancelButton: true,   
 				confirmButtonColor: "#337ab7",   
@@ -43,9 +68,9 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope){
 				closeOnConfirm: false,   closeOnCancel: false 
 			}, function(isConfirm){   
 					if (isConfirm) {     
-						swal("Deleted!", "Your imaginary file has been deleted.", "success");   
+						swal("Gelukt!", "Jou quote is verstuurd!", "success");   
 					} else {    
-					 	swal("Cancelled", "Your imaginary file is safe :)", "error"); 
+						swal.close();
 					} 
 				});
 		}
@@ -61,7 +86,13 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope){
 			  $(arg.inputId).attr("placeholder", arg.defaultPlaceholder);
 			});
 			return false
-		} else {
+		} else if(arg.fieldToCheck.length > arg.maxCharacters){
+				sweetAlert({
+					title: "Oeps!", 
+					text: "Het veld '" + arg.prettyName + "' mag maximaal " + arg.maxCharacters + " karakters bevatten!", 
+					type: "error",
+					confirmButtonColor: "#337ab7"});
+		}else {
 			return true;
 		}
 	}
