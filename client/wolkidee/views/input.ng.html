@@ -1,16 +1,25 @@
 <div class="inputContainer center" style="height: 100%;">
-	<div class="inputCenter ">
+	<div class="inputCenter">
 		<form style="height: 100%;">
-		  <div class="form-group">
-		    <input type="text" class="form-control input-lg" placeholder='Titel bijvoorbeeld "Dag Avans!"'>
+		  <div id="nameFormGroup" class="form-group">
+		    <input id="nameInput" type="text" class="form-control input-lg myInput" placeholder='Voor en achternaam'>
 		  </div>
-		  <div class="form-group" style="height: 50%;">
-		    <textarea type="text" class="form-control bigTextInput" placeholder="Je wens, bericht, anekdote of groet."></textarea>
+		  <div id="titleFormGroup" class="form-group">
+		    <input id="titleInput" type="text" class="form-control input-lg myInput" placeholder='Titel, bijvoorbeeld "Dag Avans!"'>
 		  </div>
-		  <div class="form-group">
-		    <input type="file" accept="image/*" capture="camera">
+		  <div id="quoteFormGroup" class="form-group" style="height: 50%;">
+		    <textarea id="quoteInput" type="text" class="form-control bigTextInput myInput" placeholder="Je wens, bericht, anekdote of groet."></textarea>
 		  </div>
-		  <button type="submit" class="btn btn-default">Submit</button>
+		  <div class="form-group ">
+		  	<button type="button" ng-click="ticButtonClick()" class="btn btn-default btn-lg roundInputButton">
+			  <span class="glyphicon glyphicon-ok imageButtonGlyph" aria-hidden="true"></span>
+			</button>
+			<button type="button" class="fileUpload btn btn-default btn-lg roundInputButton">
+				<span class="glyphicon glyphicon-camera imageButtonGlyph" aria-hidden="true"></span>
+			    <input id="uploadBtn" style="width:100%; height: 100%;" type="file" class="upload" />
+			</button>
+			<img style="float: right; display: none;" id="chooseFileImage" src="#"/>
+		  </div>
 		</form>
 	</div>
 
@@ -18,4 +27,26 @@
 		<img class="avansLogoImage" src="img/avans_logo.png">
 	</div>
 </div>
+
+<script type="text/javascript">
+	document.getElementById("uploadBtn").onchange = function () {
+	      if (this.files && this.files[0]) {
+		    var reader = new FileReader();
+		    reader.onload = function (e) {
+		      $('#chooseFileImage')
+		        .attr('src', e.target.result)
+		        .width("30%")
+		        .height("auto")
+		        .show();
+		    };
+		    reader.readAsDataURL(this.files[0]);
+		  }
+	};
+
+	$(".myInput").focus(function(){
+
+	}).blur(function(){
+		document.activeElement.blur();
+	});
+</script>
 
