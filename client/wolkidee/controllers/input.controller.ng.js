@@ -74,7 +74,8 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 							'name': name,
 							'title': title,
 							'quote': quote,
-							'image': 'http://placehold.it/300'
+							'image': 'http://placehold.it/300',
+							'state': 'pending'
 						}, function(){
 							swal("Gelukt!", "Jou quote is verstuurd!", "success");
 						});

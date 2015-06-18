@@ -28,10 +28,8 @@ angular.module('wolkidee.controllers', []).controller('HomeCtrl', function($scop
 			$('.grid').css('width', 'auto'); //reset
 			var windowWidth = $(document).width();
 			var blockWidth = $('.quoteCard').outerWidth(true);
-			console.log("Blockwidth: " + blockWidth)
 			var maxBoxPerRow = Math.floor(windowWidth / blockWidth);
 			var newWidth = Math.floor(maxBoxPerRow * blockWidth);
-			console.log(newWidth)
 			$('.grid').width(newWidth);
 			$('.grid').css('marg', 'auto'); //reset
 		}

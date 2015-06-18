@@ -8,37 +8,43 @@ Meteor.startup(function () {
         'title': 'Super mooie test titel',
         'name': 'Studentnaam Achternaam',
         'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
-        'image': 'http://placehold.it/300'
+        'image': 'http://placehold.it/300',
+        'state': 'accepted'
       },
       {
         'title': 'Super mooie test titel',
         'name': 'Studentnaam Achternaam',
         'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
-        'image': 'http://placehold.it/300'
+        'image': 'http://placehold.it/300',
+        'state': 'accepted'
       },
       {
         'title': 'Super mooie test titel',
         'name': 'Studentnaam Achternaam',
         'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
-        'image': 'http://placehold.it/300'
+        'image': 'http://placehold.it/300',
+        'state': 'pending'
       },
       {
         'title': 'Super mooie test titel',
         'name': 'Studentnaam Achternaam',
         'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
-        'image': 'http://placehold.it/300'
+        'image': 'http://placehold.it/300',
+        'state': 'pending'
       },
       {
         'title': 'Super mooie test titel',
         'name': 'Studentnaam Achternaam',
         'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
-        'image': 'http://placehold.it/300'
+        'image': 'http://placehold.it/300',
+        'state': 'pending'
       },
       {
         'title': 'Super mooie test titel',
         'name': 'Studentnaam Achternaam',
         'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
-        'image': 'http://placehold.it/300'
+        'image': 'http://placehold.it/300',
+        'state': 'rejected'
       },
     ];
 
