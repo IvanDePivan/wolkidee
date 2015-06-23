@@ -3,17 +3,15 @@ angular.module('wolkidee.controllers').controller('ModerateCtrl', function($scop
 	
 	$scope.accept = function(quote){
 		Quotes.update({"_id":quote._id}, {$set: {"state": "accepted"}});
-		swal({ title: "Geaccepteerd!", 
-			   text: "De quote status van " + quote.name + " staat nu op accepted!", 
+		swal({ title: "Geaccepteerd!",
 			   showConfirmButton: false,
 			   timer: 800,
 			   type: "success" });
 	}
 
 	$scope.decline = function(quote){
-		quote.state = 'rejected';
+		Quotes.update({"_id":quote._id}, {$set: {"state": "rejected"}});
 		swal({ title: "Geweigerd!",
-			   text: "De quote status van " + quote.name + " staat nu rejected!", 
 			   showConfirmButton: false,
 			   timer: 800,
 			   type: "error" });

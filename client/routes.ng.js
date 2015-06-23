@@ -41,13 +41,15 @@ angular.module("wolkidee").config(function($urlRouterProvider, $stateProvider, $
             templateUrl: 'client/wolkidee/views/moderateNonAuthenticated.ng.html',
             controller: function($scope, $state){
                 $scope.login = function(){
-                    var password = "ABCCMDcombi2015"
-                    var inputPass = $("#moderateField").val()
-                    console.log(inputPass);
+                    var password = "ABCCMDcombi2015";
+                    var inputPass = $("#moderateField").val();
                     if(password === inputPass){
                         $state.go('moderate.Authenticated');
                     } else {
-                        swal("Oeps!", "Dit is niet het goed wachtwoord", "error")
+                        swal({ title: "Verkeerd wachtwoord", 
+                               showConfirmButton: false,
+                               timer: 800, 
+                               type: "error" });
                     }
                 }
             }
