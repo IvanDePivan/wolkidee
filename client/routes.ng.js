@@ -26,12 +26,10 @@ angular.module("wolkidee").config(function($urlRouterProvider, $stateProvider, $
             url: '/moderate',
             templateUrl: 'client/wolkidee/views/moderate.ng.html',
             controller: function($scope, $state){
-                var development = false;
+                var development = true;
                 if(development){
-                    //Default go to authenticated -- development
-                    $state.go('moderate.Authenticated');
+                    $state.go('moderate.authenticated');
                 } else {
-                    //Default go to login screen -- production
                     $state.go('moderate.nonAuthenticated');
                 }
                 
@@ -44,7 +42,7 @@ angular.module("wolkidee").config(function($urlRouterProvider, $stateProvider, $
                     var password = "ABCCMDcombi2015";
                     var inputPass = $("#moderateField").val();
                     if(password === inputPass){
-                        $state.go('moderate.Authenticated');
+                        $state.go('moderate.authenticated');
                     } else {
                         swal({ title: "Verkeerd wachtwoord", 
                                showConfirmButton: false,
@@ -53,13 +51,26 @@ angular.module("wolkidee").config(function($urlRouterProvider, $stateProvider, $
                     }
                 }
             }
-        }).state('moderate.Authenticated', {
+        })
+        .state('moderate.authenticated', {
             url: '/authenticated',
             templateUrl: 'client/wolkidee/views/moderateAuthenticated.ng.html',
+            controller: 'ModerateCtrl'
+        })
+        .state('moderate.recover', {
+            url: '/recover',
+            templateUrl: 'client/wolkidee/views/moderateRecover.ng.html',
             controller: 'ModerateCtrl'
         });
         
 
 
     $urlRouterProvider.otherwise("/");
+});
+
+angular.module("wolkidee").directive('modnav', function() {
+  return {
+    restrict: 'E',
+    templateUrl: 'client/wolkidee/directives/navModerate.ng.html',
+  }
 });

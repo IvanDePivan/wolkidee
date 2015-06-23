@@ -1,7 +1,7 @@
 <div class="fullScreenContainer">
   <div class="isotope-container">
       <div class="grid js-isotope">
-          <div class="grid-item thumbnail quoteCard" ng-repeat="quote in pendingQuotes | filter: {'state': 'pending'}" isotope-item="isotope-item" on-finish-render="ngRepeatFinished" id="{{quote._id._str || quote._id}}">
+          <div class="grid-item thumbnail quoteCard" ng-repeat="quote in quotes | filter: {'state': 'pending'}" isotope-item="isotope-item" on-finish-render="ngRepeatFinished" id="{{quote._id._str || quote._id}}">
                 <img ng-src="{{quote.image}}" style="height: 130px; overflow:auto;">
                 <div class="caption">
                   <h2>{{quote.title}}</h2>
@@ -15,6 +15,10 @@
                   </div>
                 </div>
           </div>
+          <div ng-show="(quotes | filter: {'state': 'pending'}).length == 0" class="center noMore">
+            <div class="alert alert-info" role="alert">Er zijn geen te modereren quotes meer!</div>
+          </div>
       </div>
   </div>
 </div>
+<modnav></modnav>
