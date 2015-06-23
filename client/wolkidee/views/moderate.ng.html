@@ -1,12 +1,12 @@
-<div class="">
-  <div class="grid" isotope-container="isotope-container">
-    	<div class="grid-item thumbnail quoteCard" ng-repeat="quote in quotes" isotope-item="isotope-item" on-finish-render="ngRepeatFinished">
-            <img ng-src="{{quote.image}}" style="height: 130px; overflow:auto;">
-                <div class="caption">
-                  <h2>{{quote.title}}</h2>
-                  <h4>{{quote.name}}</h4>
-                  <p>{{quote.quote}}</p>
-                </div>
-      </div>
-  </div>
+<div ui-view></div>
+
+<video id="fullScreen" loop autoplay>
+  <source src="videos/wolken_1080/wolken_1080.mp4" type="video/mp4">
+  <source src="videos/wolken_1080/wolken_1080.webm" type="video/webm">
+  <source src="videos/wolken_1080/wolken_1080.ogv" type="video/ogv">
+  Your browser does not support HTML5 video.
+</video>
+
+<div class="avansLogo">
+  <img class="avansLogoImage" src="img/avans_logo.png">
 </div>
