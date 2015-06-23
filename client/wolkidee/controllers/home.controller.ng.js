@@ -1,18 +1,38 @@
-angular.module('wolkidee.controllers', []).controller('HomeCtrl', function($scope, $meteor){
+angular.module('wolkidee.controllers', []).controller('HomeCtrl', function($scope, $meteor, $filter){
 	$scope.title = 'test idee';
 
-
+		var iso;
   		$scope.quotes = $meteor.collection(Quotes);
 		console.log($scope.quotes);
-
+  		var once = true;
   	    $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
-		    $('.grid').isotope({
-	  	    	percentPosition: true,
-	    		itemSelector: '.grid-item',
-			    masonry: {
-			    	columnWidth: 0
-			    }
-  			});
+  	    	if(once){
+	  			once = false;
+	  			var elem = document.querySelector('.grid');
+				iso = new Isotope( elem, {
+				  // options
+				  itemSelector: '.grid-item',
+				  layoutMode: 'masonry'
+				});
+			   //  myIsotope = $('.grid').isotope({
+		  	 //    	percentPosition: true,
+		    // 		itemSelector: '.grid-item',
+				  //   masonry: {
+				  //   	columnWidth: 0
+				  //   }
+	  			// });
+  	    	} else {
+  	    			console.log(ngRepeatFinishedEvent);
+	  	    		console.log(iso);
+	  	    		var id;
+	  	    		if($scope.quotes[$scope.quotes.length-1]._id._str){
+	  	    			id = $scope.quotes[$scope.quotes.length-1]._id._str;
+	  	    		} else {
+	  	    			id = $scope.quotes[$scope.quotes.length-1]._id;
+	  	    		}
+	  	    		//iso.appended( $('#' + id) );
+	  	    		//iso.arrange();
+  	    	}
 
   			$(document).ready(function(){
   				$('.grid').css('margin', 'auto');
@@ -32,6 +52,6 @@ angular.module('wolkidee.controllers', []).controller('HomeCtrl', function($scop
 			var newWidth = Math.floor(maxBoxPerRow * blockWidth);
 			$('.grid').width(newWidth);
 			$('.grid').css('marg', 'auto'); //reset
-		}
+		};
 
 });
