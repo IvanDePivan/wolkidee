@@ -12,6 +12,7 @@ angular.module('wolkidee.controllers', []).controller('HomeCtrl', function($scop
 				itemSelector: '.grid-item',
 				layoutMode: 'masonry'
 			});
+			$scope.setContainerWidth();
   	    } 
 		$(window).resize(function(){
 			$scope.setContainerWidth();
