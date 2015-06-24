@@ -36,7 +36,6 @@ Meteor.startup(function () {
         'title': 'We hadden like.. vakken ofzo',
         'name':  'Ivan Horn',
         'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
-        'image': 'http://placehold.it/300',
         'state': 'pending',
         'shown': false
       },
