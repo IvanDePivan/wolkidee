@@ -56,12 +56,12 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 		}
 
 		var quoteTemplate = '<div class="grid-item-swal thumbnail">';
-		quoteTemplate += '<div class="card-image"><img id="showChosenImage" class="actual-image"></div>';
+		quoteTemplate += (images && images[0] ? '<div class="card-image"><img id="showChosenImage" class="actual-image"></div>': '');
 		quoteTemplate += '<div class="caption"><h4>' + name + '</h4><h4>' + title +'</h4>';
 		quoteTemplate += '<p>' + quote + '</p></div>';
 		quoteTemplate += '</div><br />';
 		quoteTemplate += '<p style="color: black;">Is dit goed?</p><br />';
-		console.log("showSwall");
+
 		swal({   
 			title: "Je quote zal er zo uit zien:",   
 			text: quoteTemplate,   
@@ -98,6 +98,7 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 					swal.close();
 				} 
 			});
+			
 		}
 	};
 
