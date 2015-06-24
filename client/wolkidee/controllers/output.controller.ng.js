@@ -32,10 +32,6 @@ angular.module('wolkidee.controllers').controller('OutputCtrl', function($scope,
         console.log('fadeOut');
         $('#testDiv').removeClass(fadeInClasses);
         $('#testDiv').addClass(fadeOutClasses);
-
-        // setTimeout(function(){
-        // 	$('#testDiv').addClass(hideClasses);
-        // }, 2000);
     }
 
     function fadeIn() {
