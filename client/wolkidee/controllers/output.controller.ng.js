@@ -6,26 +6,40 @@ angular.module('wolkidee.controllers').controller('OutputCtrl', function($scope,
     var frequency = 6000;
 
     var acceptedQuotes = $filter('filter')($meteor.collection(Quotes), {'state': 'accepted'});
+    var newQuotes = $filter('filter')($meteor.collection(Quotes), {'state': 'accepted', 'shown': false});
+    
     var count = acceptedQuotes.length;
+    var newCount = newQuotes.length;
 
     $scope.quote = acceptedQuotes[randomNumber()];
     
 
-    function randomNumber() {
-    	var test = Math.floor(Math.random() * count);
+    function randomNumber(limit) {
+    	var test = Math.floor(Math.random() * limit);
         return test;
     }
 
     function countQuotes(){
     	count = acceptedQuotes.length;
+        newCount = newQuotes.length;
     }
 
     function nextQuote() {
-        $scope.quote = acceptedQuotes[randomNumber()];
+        if(newCount > 0){
+           $scope.quote = newQuotes[randomNumber(newCount)]; 
+           Quotes.update({"_id":$scope.quote._id}, {$set: {'shown': true}});
+        } else {
+            $scope.quote = acceptedQuotes[randomNumber(count)];
+        }
+        console.log(newCount);
     }
 
     function getAcceptedQuotes(){
     	acceptedQuotes = $filter('filter')($meteor.collection(Quotes), {'state': 'accepted'});
+    }
+
+    function getNewQuotes(){
+        newQuotes = $filter('filter')($meteor.collection(Quotes), {'state': 'accepted', 'shown': false});
     }
 
     function fadeOut() {
@@ -46,6 +60,7 @@ angular.module('wolkidee.controllers').controller('OutputCtrl', function($scope,
             fadeOut();
             setTimeout(function(){
             	getAcceptedQuotes();
+                getNewQuotes();
             	countQuotes();
             	nextQuote();
             }, 1000);

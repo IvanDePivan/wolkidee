@@ -1,26 +1,14 @@
-<div class="">
-  <div class="isotope-container">
-      <div class="grid js-isotope">
-          <div class="grid-item thumbnail quoteCard" ng-repeat="quote in quotes | filter: {'state': 'pending'}" isotope-item="isotope-item" on-finish-render="ngRepeatFinished" id="{{quote._id._str || quote._id}}">
-                <div class="card-image">
-                <img ng-src="{{quote.image}}" class="actual-image">
-                </div>
-                <div class="caption">
-                  <h2>{{quote.title}}</h2>
-                  <h4>{{quote.name}}</h4>
-                  <p>{{quote.quote}}</p>
-                  <div class="btn-group" style="width:100%;" role="group" aria-label="moderate">
-                    <div style="text-align: center;">
-                      <button ng-click="accept(quote)" type="button" style="margin-right: 8px;" class="btn btn-primary">Accepteer</button>
-                      <button ng-click="decline(quote)" type="button" class="btn btn-danger">Weiger</button>
-                    </div>
-                  </div>
-                </div>
+<cards>
+    <card ng-repeat="quote in quotes | filter: {'state': 'pending'}">
+        <div class="btn-group" style="width:100%;" role="group" aria-label="moderate">
+          <div style="text-align: center;">
+            <button ng-click="accept(quote)" type="button" style="margin-right: 8px;" class="btn btn-primary">Accepteer</button>
+            <button ng-click="decline(quote)" type="button" class="btn btn-danger">Weiger</button>
           </div>
-          <div ng-show="(quotes | filter: {'state': 'pending'}).length == 0" class="center noMore">
-            <div class="alert alert-info" role="alert">Er zijn geen te modereren quotes meer!</div>
-          </div>
-      </div>
-  </div>
-</div>
+        </div>
+    </card>
+    <div ng-show="(quotes | filter: {'state': 'pending'}).length == 0" class="center noMore">
+        <div class="alert alert-info" role="alert">Er zijn geen te modereren quotes meer!</div>
+    </div>
+</cards>
 <modnav></modnav>

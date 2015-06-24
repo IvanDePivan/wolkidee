@@ -86,6 +86,7 @@ angular.module("wolkidee").directive('cards', function() {
 angular.module("wolkidee").directive('card', function() {
   return {
     restrict: 'E',
+    transclude: true,
     templateUrl: 'client/wolkidee/directives/card.ng.html',
   }
 });

@@ -86,7 +86,8 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 							'title': title,
 							'quote': quote,
 							'image': result.link,
-							'state': 'pending'
+							'state': 'pending',
+							'shown': false
 						}, function(){
 							swal("Gelukt!", "Jou quote is verstuurd!", "success");
 						});
