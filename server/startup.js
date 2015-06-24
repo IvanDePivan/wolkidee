@@ -54,6 +54,90 @@ Meteor.startup(function () {
         'state': 'accepted'
       },
       {
+        'title': 'Notice me senpai',
+        'name':  'do\'nt stop me now!',
+        'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
+        'image': 'http://i.imgur.com/G4868vv.jpg',
+        'state': 'accepted'
+      },
+      {
+        'title': 'Notice me senpai',
+        'name':  'do\'nt stop me now!',
+        'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
+        'image': 'http://i.imgur.com/G4868vv.jpg',
+        'state': 'accepted'
+      },
+      {
+        'title': 'Notice me senpai',
+        'name':  'do\'nt stop me now!',
+        'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
+        'image': 'http://i.imgur.com/G4868vv.jpg',
+        'state': 'accepted'
+      },
+      {
+        'title': 'Notice me senpai',
+        'name':  'do\'nt stop me now!',
+        'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
+        'image': 'http://i.imgur.com/G4868vv.jpg',
+        'state': 'accepted'
+      },
+      {
+        'title': 'Notice me senpai',
+        'name':  'do\'nt stop me now!',
+        'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
+        'image': 'http://i.imgur.com/G4868vv.jpg',
+        'state': 'accepted'
+      },
+      {
+        'title': 'Notice me senpai',
+        'name':  'do\'nt stop me now!',
+        'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
+        'image': 'http://i.imgur.com/G4868vv.jpg',
+        'state': 'accepted'
+      },
+      {
+        'title': 'Notice me senpai',
+        'name':  'do\'nt stop me now!',
+        'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
+        'image': 'http://i.imgur.com/G4868vv.jpg',
+        'state': 'accepted'
+      },
+      {
+        'title': 'Notice me senpai',
+        'name':  'do\'nt stop me now!',
+        'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
+        'image': 'http://i.imgur.com/G4868vv.jpg',
+        'state': 'accepted'
+      },
+      {
+        'title': 'Notice me senpai',
+        'name':  'do\'nt stop me now!',
+        'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
+        'image': 'http://i.imgur.com/G4868vv.jpg',
+        'state': 'accepted'
+      },
+      {
+        'title': 'Notice me senpai',
+        'name':  'do\'nt stop me now!',
+        'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
+        'image': 'http://i.imgur.com/G4868vv.jpg',
+        'state': 'accepted'
+      },
+      {
+        'title': 'Notice me senpai',
+        'name':  'do\'nt stop me now!',
+        'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
+        'image': 'http://i.imgur.com/G4868vv.jpg',
+        'state': 'accepted'
+      },
+      {
+        'title': 'Notice me senpai',
+        'name':  'do\'nt stop me now!',
+        'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
+        'image': 'http://i.imgur.com/G4868vv.jpg',
+        'state': 'accepted'
+      },
+      {
         'title': 'One... Twenty-one guns!',
         'name':  'I\'m having a good time',
         'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',

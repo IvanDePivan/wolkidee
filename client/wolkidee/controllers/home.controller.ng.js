@@ -14,13 +14,7 @@ angular.module('wolkidee.controllers', []).controller('HomeCtrl', function($scop
 				  itemSelector: '.grid-item',
 				  layoutMode: 'masonry'
 				});
-			   //  myIsotope = $('.grid').isotope({
-		  	 //    	percentPosition: true,
-		    // 		itemSelector: '.grid-item',
-				  //   masonry: {
-				  //   	columnWidth: 0
-				  //   }
-	  			// });
+
   	    	} else {
   	    			console.log(ngRepeatFinishedEvent);
 	  	    		console.log(iso);
@@ -30,8 +24,6 @@ angular.module('wolkidee.controllers', []).controller('HomeCtrl', function($scop
 	  	    		} else {
 	  	    			id = $scope.quotes[$scope.quotes.length-1]._id;
 	  	    		}
-	  	    		//iso.appended( $('#' + id) );
-	  	    		//iso.arrange();
   	    	}
 
   			$(document).ready(function(){
@@ -42,6 +34,10 @@ angular.module('wolkidee.controllers', []).controller('HomeCtrl', function($scop
 			  $(window).resize(function(){
 			    $scope.setContainerWidth();
 			});
+		});
+
+		$(window).load(function() {
+			iso.arrange();
 		});
 
 		$scope.setContainerWidth = function(){

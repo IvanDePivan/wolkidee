@@ -1,8 +1,10 @@
-<div class="fullScreenContainer">
+<div class="">
   <div class="isotope-container">
       <div class="grid js-isotope">
           <div class="grid-item thumbnail quoteCard" ng-repeat="quote in quotes | filter: {'state': 'pending'}" isotope-item="isotope-item" on-finish-render="ngRepeatFinished" id="{{quote._id._str || quote._id}}">
-                <img ng-src="{{quote.image}}" style="height: 130px; overflow:auto;">
+                <div class="card-image">
+                <img ng-src="{{quote.image}}" class="actual-image">
+                </div>
                 <div class="caption">
                   <h2>{{quote.title}}</h2>
                   <h4>{{quote.name}}</h4>
