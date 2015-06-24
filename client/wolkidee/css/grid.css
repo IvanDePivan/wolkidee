@@ -28,5 +28,13 @@
 
 .card-image {
 	height: auto;
-	overflow:hidden;
+  max-height: 250px;
+  width: 100%;
+  overflow:hidden;
+
+}
+
+
+.actual-image {
+  width: 100%;
 }

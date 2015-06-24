@@ -2,13 +2,13 @@
 	<div class="inputCenter">
 		<form style="height: 100%;">
 		  <div id="nameFormGroup" class="form-group">
-		    <input id="nameInput" type="text" class="form-control input-lg myInput" placeholder='Voor en achternaam'>
+		    <input id="nameInput" type="text" class="form-control input-lg myInput" placeholder='Voor en achternaam' ng-model="name">
 		  </div>
 		  <div id="titleFormGroup" class="form-group">
-		    <input id="titleInput" type="text" class="form-control input-lg myInput" placeholder='Titel, bijvoorbeeld "Dag Avans!"'>
+		    <input id="titleInput" ng-model="title" type="text" class="form-control input-lg myInput" placeholder='Titel, bijvoorbeeld "Dag Avans!"'>
 		  </div>
 		  <div id="quoteFormGroup" class="form-group" style="height: 50%;">
-		    <textarea id="quoteInput" type="text" class="form-control bigTextInput myInput" placeholder="Je wens, bericht, anekdote of groet."></textarea>
+		    <textarea id="quoteInput" ng-model="quote" type="text" class="form-control bigTextInput myInput" placeholder="Je wens, bericht, anekdote of groet."></textarea>
 		  </div>
 		  <div class="form-group ">
 		  	<button type="button" ng-click="ticButtonClick()" class="btn btn-default btn-lg roundInputButton">
