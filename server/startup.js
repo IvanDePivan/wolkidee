@@ -8,7 +8,6 @@ Meteor.startup(function () {
         'title': 'Houdoe Avans!',
         'name': 'Pieter Hendriksen',
         'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
-        'image': 'http://placehold.it/300',
         'state': 'pending',
         'shown': false
       },
@@ -16,7 +15,6 @@ Meteor.startup(function () {
         'title': 'Een laatste groet!',
         'name':  'Arja Mortenssen',
         'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
-        'image': 'http://placehold.it/300',
         'state': 'pending',
         'shown': false
       },
@@ -24,7 +22,6 @@ Meteor.startup(function () {
         'title': 'Houdoe allemaal!',
         'name':  'Elsa Martens',
         'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
-        'image': 'http://placehold.it/300',
         'state': 'pending',
         'shown': false
       },
@@ -32,7 +29,6 @@ Meteor.startup(function () {
         'title': 'Was heel leuk!',
         'name':  'Erik Brandsma',
         'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
-        'image': 'http://placehold.it/300',
         'state': 'pending',
         'shown': false
       },
@@ -48,7 +44,6 @@ Meteor.startup(function () {
         'title': 'Kawaii sugoi sugoi',
         'name':  'Give a little time',
         'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
-        'image': 'http://placehold.it/300',
         'state': 'pending',
         'shown': false
       },
