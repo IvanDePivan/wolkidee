@@ -34,6 +34,8 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 		var good = true;
 		var uploadImage;
 
+		$scope.chosenImage = '';
+
 		//Check name validity
 
 		good = checkFields([name, title, quote], [nameReqs, titleReqs, quoteReqs]);
@@ -42,19 +44,19 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 			var imageSource;
 
 		var images = document.getElementById("uploadBtn").files;
-
 		if (images && images[0]) {
 		    var reader = new FileReader();
 		    reader.onload = function (e) {
-		      uploadImage = e.target.result;
+		      $scope.chosenImage = e.target.result;
 		      $('#showChosenImage')
-		        .attr('src', e.target.result)
+		        .attr('src', $scope.chosenImage)
 		        .show();
 		    };
 		    reader.readAsDataURL(images[0]);
 		}
+
 		var quoteTemplate = '<div class="grid-item-swal thumbnail">';
-		quoteTemplate += '<img id="showChosenImage" src="http://placehold.it/260x130/EEE" style="height: 130px; overflow:auto;">';
+		quoteTemplate += '<div class="card-image"><img id="showChosenImage" class="actual-image"></div>';
 		quoteTemplate += '<div class="caption"><h4>' + name + '</h4><h4>' + title +'</h4>';
 		quoteTemplate += '<p>' + quote + '</p></div>';
 		quoteTemplate += '</div><br />';
@@ -77,7 +79,7 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 						allowEscapeKey: false,
 						showConfirmButton: false,
 					});
-					uploadToImgur(uploadImage).then(function(result){
+					uploadToImgur($scope.chosenImage).then(function(result){
 						console.log(result);
 						Quotes.insert({
 							'name': name,

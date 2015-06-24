@@ -38,10 +38,6 @@ angular.module('wolkidee.controllers').controller('ModerateCtrl', function($scop
 	$(window).load(function() {
 		iso.arrange();
 	});
-	
-    
-    
-
 
 
 	$scope.accept = function(quote){
