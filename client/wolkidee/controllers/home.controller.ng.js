@@ -24,6 +24,7 @@ angular.module('wolkidee.controllers', []).controller('HomeCtrl', function($scop
 	  	    		} else {
 	  	    			id = $scope.quotes[$scope.quotes.length-1]._id;
 	  	    		}
+	  	    		iso.arrange();
   	    	}
 
   			$(document).ready(function(){
