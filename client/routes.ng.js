@@ -74,3 +74,18 @@ angular.module("wolkidee").directive('modnav', function() {
     templateUrl: 'client/wolkidee/directives/navModerate.ng.html',
   }
 });
+
+angular.module("wolkidee").directive('cards', function() {
+  return {
+    restrict: 'E',
+    transclude: true,
+    templateUrl: 'client/wolkidee/directives/cards.ng.html',
+  }
+});
+
+angular.module("wolkidee").directive('card', function() {
+  return {
+    restrict: 'E',
+    templateUrl: 'client/wolkidee/directives/card.ng.html',
+  }
+});

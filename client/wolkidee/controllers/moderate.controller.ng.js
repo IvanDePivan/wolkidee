@@ -39,11 +39,6 @@ angular.module('wolkidee.controllers').controller('ModerateCtrl', function($scop
 		iso.arrange();
 	});
 	
-    
-    
-
-
-
 	$scope.accept = function(quote){
 		Quotes.update({"_id":quote._id}, {$set: {"state": "accepted"}});
 		swal({ title: "Geaccepteerd!",
@@ -105,5 +100,4 @@ angular.module('wolkidee.controllers').controller('ModerateCtrl', function($scop
 		$('.grid').width(newWidth);
 		$('.grid').css('marg', 'auto'); //reset
 	};
-
 });
