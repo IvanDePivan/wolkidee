@@ -38,12 +38,20 @@ angular.module('wolkidee.controllers').controller('ModerateCtrl', function($scop
 	$(window).load(function() {
 		$scope.iso.arrange();
 	});
+
+	function isoArrange(quote){
+		console.log($scope.iso.items);
+		var id = (quote._id._str ? quote._id._str : quote._id);
+		$scope.iso.remove($('#' + id));
+		$scope.iso.arrange({
+			itemSelector: '.grid-item',
+		  	layoutMode: 'masonry'
+		});
+	}
 	
 	$scope.accept = function(quote){
 		Quotes.update({"_id":quote._id}, {$set: {"state": "accepted"}});
-		$timeout(function(){
-			$scope.iso.arrange();
-		}, $scope.updateAfter);
+		$timeout(isoArrange(quote), $scope.updateAfter);
 		swal({ title: "Geaccepteerd!",
 			   showConfirmButton: false,
 			   timer: $scope.standardTimeout,
@@ -52,28 +60,20 @@ angular.module('wolkidee.controllers').controller('ModerateCtrl', function($scop
 
 	$scope.decline = function(quote){
 		Quotes.update({"_id":quote._id}, {$set: {"state": "rejected"}});
-		$timeout(function(){
-			$scope.iso.arrange();
-		}, $scope.updateAfter);
+		$timeout(isoArrange(quote), $scope.updateAfter);
 		swal({ title: "Geweigerd!",
 			   showConfirmButton: false,
 			   timer: $scope.standardTimeout,
-			   type: "error" }, function(){
-			   		$scope.iso.arrange();
-			   });
+			   type: "error" });
 	};
 
 	$scope.recover = function(quote){
 		Quotes.update({"_id":quote._id}, {$set: {"state": "pending"}});
-		$timeout(function(){
-			$scope.iso.arrange();
-		}, $scope.updateAfter);
+		$timeout(isoArrange(quote), $scope.updateAfter);
 		swal({ title: "Hersteld!",
 			   showConfirmButton: false,
 			   timer: $scope.standardTimeout,
-			   type: "success" }, function(){
-			   		$scope.iso.arrange();
-			   });
+			   type: "success" });
 	};
 
 	$scope.permaDelete = function(quote){
@@ -87,12 +87,8 @@ angular.module('wolkidee.controllers').controller('ModerateCtrl', function($scop
 				closeOnConfirm: false }, 
 				function(){   
 					Quotes.remove(quote._id);
-					$timeout(function(){
-						$scope.iso.arrange();
-					}, $scope.updateAfter);
-					swal({title: "Verwijderd!", timer: $scope.standardTimeout, type: "success" }, function(){
-			   			$scope.iso.arrange();
-			   		}); 
+					$timeout(isoArrange(quote), $scope.updateAfter);
+					swal({title: "Verwijderd!", timer: $scope.standardTimeout, type: "success" }); 
 				});
 	};
 
