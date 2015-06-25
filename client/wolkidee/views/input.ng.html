@@ -4,7 +4,19 @@
 		  <div id="nameFormGroup" class="form-group">
 		    <input id="nameInput" type="text" class="form-control input-lg myInput" placeholder='Voor en achternaam' ng-model="name">
 		  </div>
-		  <div id="titleFormGroup" class="form-group">
+		  <!-- Single button -->
+		<div class="btn-group" style="width:100%;">
+		  <button style="width:25%;" id="educationButton" class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    {{education}} <span class="caret"></span>
+		  </button>
+		  <div id="educationAlert" class="alert alert-danger" role="alert">Opleiding moet gekozen worden!</div>
+		  <ul class="dropdown-menu" style="margin-top: -10px;">
+		    <li><a>Opleiding</a></li>
+		    <li role="separator" class="divider"></li>
+		    <li ng-repeat="education in educations"><a ng-click="choseEducation(education)">{{education}}</a></li>
+		  </ul>
+		</div>
+		  <div id="titleFormGroup" style="margin-top: 10px;" class="form-group">
 		    <input id="titleInput" ng-model="title" type="text" class="form-control input-lg myInput" placeholder='Titel, bijvoorbeeld "Dag Avans!"'>
 		  </div>
 		  <div id="quoteFormGroup" class="form-group" style="height: 50%;">
