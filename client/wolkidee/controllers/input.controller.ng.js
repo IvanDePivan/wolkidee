@@ -4,6 +4,7 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 	$scope.title = "";
 	$scope.quote = "";
 	$scope.stop;
+	$scope.educationInertObject = { name: "Opleiding" }
 
 	var nameReqs = {
 		scopeVar: "name",
@@ -33,8 +34,8 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 		errorPlaceholder: "De wens, bericht, anekdote of groet moet tussen 2 en 400 karakters bevatten!"
 	};
 
-	$scope.educations = ["CMD", "Informatica", "Kunst en vormgeving", "Werktuigbouwkunde", ""];
-	$scope.education = "Opleiding"; //<--- de knop begint op "Opleiding"
+	$scope.educations = $meteor.collection(Educations);
+	$scope.education = $scope.educationInertObject; //<--- de knop begint op "Opleiding"
 
 	$scope.choseEducation = function(selectedEducation){
 		$scope.education = selectedEducation
@@ -107,7 +108,7 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 					'quote': $scope.quote,
 					'image': result.link,
 					'state': 'pending',
-					'education': $scope.education,
+					'education': $scope.education.name,
 					'shown': false
 				});
 			}, function(error){
@@ -120,7 +121,7 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 				'title': $scope.title,
 				'quote': $scope.quote,
 				'state': 'pending',
-				'education': $scope.education,
+				'education': $scope.education.name,
 				'shown': false
 			});
 		}
@@ -130,12 +131,10 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 		Quotes.insert(quote,  
 		function(){
 			swal({ title: "Gelukt!", text: "Jou quote is verstuurd!", type: "success" }, function(){
-				console.log($scope.name);
-				console.log($scope.education);
 					$scope.name = ""
 					$scope.title = ""
 					$scope.quote = ""
-					$scope.education = "Opleiding";
+					$scope.education = $scope.educationInertObject;
 					$scope.$apply();
 					$('#chooseFileImage').hide();
 					document.getElementById("uploadBtn").value = ""
@@ -169,7 +168,7 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 			}
 		}
 		//Education check + animation
-		if($scope.education === "Opleiding"){
+		if($scope.education.name === $scope.educationInertObject.name){
 			result = false;
 			if(angular.isDefined(stop)){
 				$timeout.cancel(stop);
