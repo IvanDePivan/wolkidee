@@ -11,18 +11,18 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 		inputId: "#nameInput",
 		formGroupId: "#nameFormGroup",
 		prettyName: "naam",
-		maxCharacters: "20",
+		maxCharacters: "30",
 		defaultPlaceholder: "Voor en achternaam!",
-		errorPlaceholder: "De voor en achternaam moet tussen 2 en 20 karakters bevatten!"
+		errorPlaceholder: "De voor en achternaam moet tussen 2 en 30 karakters bevatten!"
 	};
 	var titleReqs = {
 		scopeVar: "title",
 		inputId: "#titleInput",
 		formGroupId: "#titleFormGroup",
 		prettyName: "title",
-		maxCharacters: "20",
+		maxCharacters: "30",
 		defaultPlaceholder: 'Titel, bijvoorbeeld "Dag Avans!"',
-		errorPlaceholder: "De titel moet tussen 2 en 20 karakters bevatten!"
+		errorPlaceholder: "De titel moet tussen 2 en 30 karakters bevatten!"
 	};
 	var quoteReqs = {
 		scopeVar: "quote",
