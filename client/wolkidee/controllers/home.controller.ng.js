@@ -1,8 +1,14 @@
-angular.module('wolkidee.controllers', []).controller('HomeCtrl', function($scope, $meteor, $filter){
+angular.module('wolkidee.controllers').controller('HomeCtrl', function($scope, $meteor, $state, $filter, $stateParams){
 	$scope.title = 'test idee';
 
-	$scope.iso;
-  	$scope.quotes = $meteor.collection(Quotes);
+	if($stateParams["education"]){
+		$scope.education = { name: $stateParams["education"] }
+		$scope.iso;
+  		$scope.quotes = $filter('filter')($meteor.collection(Quotes), {'state': 'accepted', 'education': $scope.education.name});
+	} else {
+		$state.go('home.education');
+	}
+	
   	var once = true;
     $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
   	    if(once){
@@ -34,4 +40,8 @@ angular.module('wolkidee.controllers', []).controller('HomeCtrl', function($scop
 		var newWidth = Math.floor(maxBoxPerRow * blockWidth);
 		$('.grid').width(newWidth);
 	};
+
+	$scope.back = function(){
+		$state.go('home.education');
+	}
 });

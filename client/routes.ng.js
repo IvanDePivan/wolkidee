@@ -7,9 +7,21 @@ angular.module("wolkidee").config(function($urlRouterProvider, $stateProvider, $
             abstract: true,
             templateUrl: 'client/wolkidee/views/app.ng.html'
         })
-        .state('app.home', {
+        .state('home', {
             url: '/',
-            templateUrl: 'client/wolkidee/views/home.ng.html',
+            templateUrl: 'client/wolkidee/views/fullscreen.ng.html',
+            controller: function($scope, $state){
+                $state.go('home.education');
+            }
+        })
+        .state('home.education', {
+            url:'education',
+            templateUrl: 'client/wolkidee/views/home/education.ng.html',
+            controller: 'EducationCtrl'
+        })
+        .state('home.main', {
+            url:'main?education',
+            templateUrl: 'client/wolkidee/views/home/home.ng.html',
             controller: 'HomeCtrl'
         })
         .state('input', {
@@ -24,7 +36,7 @@ angular.module("wolkidee").config(function($urlRouterProvider, $stateProvider, $
         })
         .state('moderate', {
             url: '/moderate',
-            templateUrl: 'client/wolkidee/views/moderate.ng.html',
+            templateUrl: 'client/wolkidee/views/fullscreen.ng.html',
             controller: function($scope, $state){
                 var development = true;
                 if(development){
@@ -36,7 +48,7 @@ angular.module("wolkidee").config(function($urlRouterProvider, $stateProvider, $
             }
         })
         .state('moderate.nonAuthenticated', {
-            templateUrl: 'client/wolkidee/views/moderateNonAuthenticated.ng.html',
+            templateUrl: 'client/wolkidee/views/moderate/moderateNonAuthenticated.ng.html',
             controller: function($scope, $state){
                 $scope.login = function(){
                     var password = "ABCCMDcombi2015";
@@ -54,12 +66,12 @@ angular.module("wolkidee").config(function($urlRouterProvider, $stateProvider, $
         })
         .state('moderate.authenticated', {
             url: '/authenticated',
-            templateUrl: 'client/wolkidee/views/moderateAuthenticated.ng.html',
+            templateUrl: 'client/wolkidee/views/moderate/moderateAuthenticated.ng.html',
             controller: 'ModerateCtrl'
         })
         .state('moderate.recover', {
             url: '/recover',
-            templateUrl: 'client/wolkidee/views/moderateRecover.ng.html',
+            templateUrl: 'client/wolkidee/views/moderate/moderateRecover.ng.html',
             controller: 'ModerateCtrl'
         });
         
