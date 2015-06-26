@@ -1,5 +1,5 @@
 Quotes = new Mongo.Collection("quotes");
-Educations = new Mongo.Collection("educations");
+Academies = new Mongo.Collection("academies");
 
 angular.module('wolkidee',['angular.snackbar', 'angular-meteor', 'ui.router', 'wolkidee.controllers', 'wolkidee.directives']);
 

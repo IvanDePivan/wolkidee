@@ -4,7 +4,7 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 	$scope.title = "";
 	$scope.quote = "";
 	$scope.stop;
-	$scope.educationInertObject = { name: "Opleiding" }
+	$scope.academieInertObject = { name: "Academie" }
 
 	var nameReqs = {
 		scopeVar: "name",
@@ -34,11 +34,11 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 		errorPlaceholder: "De wens, bericht, anekdote of groet moet tussen 2 en 400 karakters bevatten!"
 	};
 
-	$scope.educations = $meteor.collection(Educations);
-	$scope.education = $scope.educationInertObject; //<--- de knop begint op "Opleiding"
+	$scope.academies = $meteor.collection(Academies);
+	$scope.academie = $scope.academieInertObject; //<--- de knop begint op "Academie"
 
-	$scope.choseEducation = function(selectedEducation){
-		$scope.education = selectedEducation
+	$scope.choseAcademie = function(selectedAcademie){
+		$scope.academie= selectedAcademie
 	}
 
 	$scope.ticButtonClick = function(){
@@ -81,7 +81,6 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 			cancelButtonText: "Nee!",   
 			closeOnConfirm: false,   closeOnCancel: false 
 		}, function(isConfirm){   
-				console.log($scope.chosenImage);
 				if (isConfirm) {   
 					$scope.imageUploadOrNot();
 				} else {    
@@ -108,7 +107,7 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 					'quote': $scope.quote,
 					'image': result.link,
 					'state': 'pending',
-					'education': $scope.education.name,
+					'academie': $scope.academie.name,
 					'shown': false
 				});
 			}, function(error){
@@ -121,7 +120,7 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 				'title': $scope.title,
 				'quote': $scope.quote,
 				'state': 'pending',
-				'education': $scope.education.name,
+				'academie': $scope.academie.name,
 				'shown': false
 			});
 		}
@@ -134,7 +133,7 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 					$scope.name = ""
 					$scope.title = ""
 					$scope.quote = ""
-					$scope.education = $scope.educationInertObject;
+					$scope.academie = $scope.academieInertObject;
 					$scope.$apply();
 					$('#chooseFileImage').hide();
 					document.getElementById("uploadBtn").value = ""
@@ -167,19 +166,18 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 				result = false
 			}
 		}
-		//Education check + animation
-		if($scope.education.name === $scope.educationInertObject.name){
+		if($scope.academie.name === $scope.academieInertObject.name){
 			result = false;
 			if(angular.isDefined(stop)){
 				$timeout.cancel(stop);
             	stop = undefined;
 			}
-			$("#educationAlert").finish();
-			$("#educationAlert").animate({
+			$("#academieAlert").finish();
+			$("#academieAlert").animate({
 		    opacity: 1,
 		  	}, 500, function() {
 		  		stop = $timeout(function(){
-					$("#educationAlert").animate({
+					$("#academieAlert").animate({
 				    	opacity: 0,
 				  	}, 1000, function() {
 
@@ -191,7 +189,6 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 	}
 
 	function checkValid(field, options) {
-		console.log(field);
 		options.fieldToCheck = field;
 		return checkValidity(options);
 	}

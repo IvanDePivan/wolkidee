@@ -1,19 +1,22 @@
 Quotes = new Mongo.Collection("quotes");
-Educations = new Mongo.Collection("educations");
+Academies = new Mongo.Collection("academies");
 
 Meteor.startup(function () {
-  if(Educations.find().count() === 0){
-    var educations = [
-      { 'name': "Informatica" },
-      { 'name': "Werktuigbouwkunde" },
-      { 'name': "CMD" },
-      { 'name': "Kunst en vormgeving" },
-      { 'name': "Technische informatica" },
-      { 'name': "Zorg" },
+  if(Academies.find().count() === 0){
+    var academies = [
+      { 'name': "AB&I" },
+      { 'name': "AHB" },
+      { 'name': "AI&I" },
+      { 'name': "AGZ" },
+      { 'name': "AMIB" },
+      { 'name': "AOMI" },
+      { 'name': "AVB" },
+      { 'name': "AVD" },
+      { 'name': "AFM" },
     ];
 
-    for (var i = 0; i < educations.length; i++)
-      Educations.insert(educations[i]);
+    for (var i = 0; i < academies.length; i++)
+      Academies.insert(academies[i]);
   }
 
   if (Quotes.find().count() === 0) {
@@ -24,7 +27,7 @@ Meteor.startup(function () {
         'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
         'state': 'pending',
         'shown': false,
-        'education': 'Informatica'
+        'academie': 'AI&I'
       },
       {
         'title': 'Een laatste groet!',
@@ -32,7 +35,7 @@ Meteor.startup(function () {
         'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
         'state': 'pending',
         'shown': false,
-        'education': 'Informatica'
+        'academie': 'AI&I'
       },
       {
         'title': 'Houdoe allemaal!',
@@ -40,7 +43,7 @@ Meteor.startup(function () {
         'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
         'state': 'pending',
         'shown': false,
-        'education': 'Informatica'
+        'academie': 'AI&I'
       },
       {
         'title': 'Was heel leuk!',
@@ -48,7 +51,7 @@ Meteor.startup(function () {
         'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
         'state': 'pending',
         'shown': false,
-        'education': 'Informatica'
+        'academie': 'AI&I'
       },
       {
         'title': 'We hadden like.. vakken ofzo',
@@ -56,7 +59,7 @@ Meteor.startup(function () {
         'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
         'state': 'pending',
         'shown': false,
-        'education': 'Informatica'
+        'academie': 'AI&I'
       },
       {
         'title': 'Kawaii sugoi sugoi',
@@ -64,7 +67,7 @@ Meteor.startup(function () {
         'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
         'state': 'pending',
         'shown': false,
-        'education': 'Informatica'
+        'academie': 'AI&I'
       },
       {
         'title': 'Notice me senpai',
@@ -73,7 +76,7 @@ Meteor.startup(function () {
         'image': 'http://i.imgur.com/G4868vv.jpg',
         'state': 'accepted',
         'shown': false,
-        'education': 'Informatica'
+        'academie': 'AI&I'
       },
       {
         'title': 'Notice me senpai',
@@ -82,7 +85,7 @@ Meteor.startup(function () {
         'image': 'http://i.imgur.com/G4868vv.jpg',
         'state': 'accepted',
         'shown': false,
-        'education': 'Informatica'
+        'academie': 'AI&I'
       },
       {
         'title': 'Notice me senpai',
@@ -91,7 +94,7 @@ Meteor.startup(function () {
         'image': 'http://i.imgur.com/G4868vv.jpg',
         'state': 'accepted',
         'shown': false,
-        'education': 'Informatica'
+        'academie': 'AI&I'
       },
       {
         'title': 'Notice me senpai',
@@ -100,7 +103,7 @@ Meteor.startup(function () {
         'image': 'http://i.imgur.com/G4868vv.jpg',
         'state': 'accepted',
         'shown': false,
-        'education': 'Informatica'
+        'academie': 'AI&I'
       },
       {
         'title': 'Notice me senpai',
@@ -109,7 +112,7 @@ Meteor.startup(function () {
         'image': 'http://i.imgur.com/G4868vv.jpg',
         'state': 'accepted',
         'shown': false,
-        'education': 'Informatica'
+        'academie': 'AI&I'
       },
       {
         'title': 'Notice me senpai',
@@ -118,7 +121,7 @@ Meteor.startup(function () {
         'image': 'http://i.imgur.com/G4868vv.jpg',
         'state': 'accepted',
         'shown': false,
-        'education': 'Informatica'
+        'academie': 'AI&I'
       },
       {
         'title': 'Notice me senpai',
@@ -127,7 +130,7 @@ Meteor.startup(function () {
         'image': 'http://i.imgur.com/G4868vv.jpg',
         'state': 'accepted',
         'shown': false,
-        'education': 'Informatica'
+        'academie': 'AI&I'
       },
       {
         'title': 'Notice me senpai',
@@ -136,7 +139,7 @@ Meteor.startup(function () {
         'image': 'http://i.imgur.com/G4868vv.jpg',
         'state': 'accepted',
         'shown': false,
-        'education': 'Informatica'
+        'academie': 'AI&I'
       },
       {
         'title': 'Notice me senpai',
@@ -145,7 +148,7 @@ Meteor.startup(function () {
         'image': 'http://i.imgur.com/G4868vv.jpg',
         'state': 'accepted',
         'shown': false,
-        'education': 'Informatica'
+        'academie': 'AI&I'
       },
       {
         'title': 'Notice me senpai',
@@ -154,7 +157,7 @@ Meteor.startup(function () {
         'image': 'http://i.imgur.com/G4868vv.jpg',
         'state': 'accepted',
         'shown': false,
-        'education': 'Informatica'
+        'academie': 'AI&I'
       },
       {
         'title': 'Notice me senpai',
@@ -163,7 +166,7 @@ Meteor.startup(function () {
         'image': 'http://i.imgur.com/G4868vv.jpg',
         'state': 'accepted',
         'shown': false,
-        'education': 'Informatica'
+        'academie': 'AI&I'
       },
       {
         'title': 'Notice me senpai',
@@ -172,7 +175,7 @@ Meteor.startup(function () {
         'image': 'http://i.imgur.com/G4868vv.jpg',
         'state': 'accepted',
         'shown': false,
-        'education': 'Informatica'
+        'academie': 'AI&I'
       },
       {
         'title': 'Notice me senpai',
@@ -181,7 +184,7 @@ Meteor.startup(function () {
         'image': 'http://i.imgur.com/G4868vv.jpg',
         'state': 'accepted',
         'shown': false,
-        'education': 'CMD'
+        'academie': 'AVD'
       },
       {
         'title': 'One... Twenty-one guns!',
@@ -190,7 +193,7 @@ Meteor.startup(function () {
         'image': 'http://i.imgur.com/KHokmZS.jpg',
         'state': 'rejected',
         'shown': false,
-        'education': 'Informatica'
+        'academie': 'AI&I'
       },
       {
         'title': 'There\'s no stopping me',
@@ -199,7 +202,7 @@ Meteor.startup(function () {
         'image': 'http://i.imgur.com/GuAB8OE.jpg',
         'state': 'accepted',
         'shown': false,
-        'education': 'CMD'
+        'academie': 'AVD'
       },
       {
         'title': 'Je weet dat ik',
@@ -208,7 +211,7 @@ Meteor.startup(function () {
         'image': 'http://i.imgur.com/dAvWkN8.jpg',
         'state': 'accepted',
         'shown': false,
-        'education': 'CMD'
+        'academie': 'AVD'
       },
     ];
 

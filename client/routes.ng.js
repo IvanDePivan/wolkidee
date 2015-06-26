@@ -1,5 +1,5 @@
 angular.module("wolkidee").config(function($urlRouterProvider, $stateProvider, $locationProvider) {
-
+    var development = true;
     $locationProvider.html5Mode(true);
 
     $stateProvider
@@ -10,17 +10,21 @@ angular.module("wolkidee").config(function($urlRouterProvider, $stateProvider, $
         .state('home', {
             url: '/',
             templateUrl: 'client/wolkidee/views/fullscreen.ng.html',
-            controller: function($scope, $state){
-                $state.go('home.education');
+            controller: function($scope, $state, $stateParams){
+                if($state.current.name === "home.main"){
+                    $state.go('home.main');
+                } else {
+                    $state.go('home.academie');
+                }
             }
         })
-        .state('home.education', {
-            url:'education',
-            templateUrl: 'client/wolkidee/views/home/education.ng.html',
-            controller: 'EducationCtrl'
+        .state('home.academie', {
+            url:'academie',
+            templateUrl: 'client/wolkidee/views/home/academie.ng.html',
+            controller: 'AcademieCtrl'
         })
         .state('home.main', {
-            url:'main?education',
+            url:'main/:academie',
             templateUrl: 'client/wolkidee/views/home/home.ng.html',
             controller: 'HomeCtrl'
         })
@@ -38,7 +42,6 @@ angular.module("wolkidee").config(function($urlRouterProvider, $stateProvider, $
             url: '/moderate',
             templateUrl: 'client/wolkidee/views/fullscreen.ng.html',
             controller: function($scope, $state){
-                var development = true;
                 if(development){
                     $state.go('moderate.authenticated');
                 } else {

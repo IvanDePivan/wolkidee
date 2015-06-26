@@ -12,7 +12,6 @@ angular.module('wolkidee.controllers').controller('ModerateCtrl', function($scop
 		once = true;
 		$scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
 	    	if(once){
-	    		console.log("HALLO");
 	    		var elem = document.querySelector('.grid');
 				$scope.iso = new Isotope( elem, {
 				  // options
@@ -40,7 +39,6 @@ angular.module('wolkidee.controllers').controller('ModerateCtrl', function($scop
 	});
 
 	function isoArrange(quote){
-		console.log($scope.iso.items);
 		var id = (quote._id._str ? quote._id._str : quote._id);
 		$scope.iso.remove($('#' + id));
 		$scope.iso.arrange({
@@ -105,16 +103,11 @@ angular.module('wolkidee.controllers').controller('ModerateCtrl', function($scop
 	};
 
 	$rootScope.setContainerWidth = function(){
-		console.log("SET CONTAINER WIDTH");
 		$('.grid').css('width', 'auto'); //reset
 		var windowWidth = $(document).width();
-		console.log("WindowWidth: " + windowWidth);
 		var blockWidth = $('.quoteCard').outerWidth(true);
-		console.log("Blockwidth: " + blockWidth);
 		var maxBoxPerRow = Math.floor(windowWidth / blockWidth);
-		console.log("MaxBoxPerRow: " + maxBoxPerRow);
 		var newWidth = Math.floor(maxBoxPerRow * blockWidth);
-		console.log("NewWidth: " + newWidth);
 		$('.grid').width(newWidth);
 	};
 });

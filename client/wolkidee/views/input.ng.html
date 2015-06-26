@@ -6,14 +6,14 @@
 		  </div>
 		  <!-- Single button -->
 		<div class="btn-group" style="width:100%;">
-		  <button style="width:25%;" id="educationButton" class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		    {{education.name}} <span class="caret"></span>
+		  <button style="width:25%;" id="academieButton" class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    {{academie.name}} <span class="caret"></span>
 		  </button>
-		  <div id="educationAlert" class="alert alert-danger" role="alert">Opleiding moet gekozen worden!</div>
+		  <div id="academieAlert" class="alert alert-danger" role="alert">Academie moet gekozen worden!</div>
 		  <ul class="dropdown-menu" style="margin-top: -10px;">
-		    <li><a>{{educationInertObject.name}}</a></li>
+		    <li><a>{{academieInertObject.name}}</a></li>
 		    <li role="separator" class="divider"></li>
-		    <li ng-repeat="education in educations"><a ng-click="choseEducation(education)">{{education.name}}</a></li>
+		    <li ng-repeat="academie in academies"><a ng-click="choseAcademie(academie)">{{academie.name}}</a></li>
 		  </ul>
 		</div>
 		  <div id="titleFormGroup" style="margin-top: 10px;" class="form-group">

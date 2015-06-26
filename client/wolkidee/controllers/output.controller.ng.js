@@ -31,7 +31,6 @@ angular.module('wolkidee.controllers').controller('OutputCtrl', function($scope,
         } else {
             $scope.quote = acceptedQuotes[randomNumber(count)];
         }
-        console.log(newCount);
     }
 
     function getAcceptedQuotes(){
@@ -43,13 +42,11 @@ angular.module('wolkidee.controllers').controller('OutputCtrl', function($scope,
     }
 
     function fadeOut() {
-        console.log('fadeOut');
         $('#testDiv').removeClass(fadeInClasses);
         $('#testDiv').addClass(fadeOutClasses);
     }
 
     function fadeIn() {
-        console.log('fadeIn');
         $('#testDiv').removeClass(hideClasses);
         $('#testDiv').removeClass(fadeOutClasses);
         $('#testDiv').addClass(fadeInClasses);

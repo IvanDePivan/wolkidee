@@ -1,16 +1,16 @@
 <div class="fullScreenContainer">
 	<div class="col-lg-6 center" style="width:300px;">
 	    <div class="btn-group" style="width:100%;">
-		  <button style="width:80%;" id="educationButton" class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		    {{education.name}} <span class="caret"></span>
+		  <button style="width:80%;" id="academieButton" class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    {{academie.name}} <span class="caret"></span>
 		  </button>
 		  <span class="input-group-btn" style="width:20%;">
 	        <button style="width:100%; height:46px;" class="btn btn-primary" ng-click="goToMain()" type="button">Go!</button>
 	      </span>
 		  <ul class="dropdown-menu" style="margin-top: -10px;">
-		    <li><a>{{educationInertObject.name}}</a></li>
+		    <li><a>{{academieInertObject.name}}</a></li>
 		    <li role="separator" class="divider"></li>
-		    <li ng-repeat="education in educations"><a ng-click="choseEducation(education)">{{education.name}}</a></li>
+		    <li ng-repeat="academie in academies"><a ng-click="choseAcademie(academie)">{{academie.name}}</a></li>
 		  </ul>
 		</div>
 	</div><!-- /.col-lg-6 -->
