@@ -1,7 +1,7 @@
 <cards>
-  <card ng-repeat="quote in quotes | filter: {'state': 'accepted'}"></card>
+  <card ng-repeat="quote in quotes | filter: {'state': 'accepted', 'academie': academie.name}"></card>
 </cards>
-<div ng-show="(quotes | filter: {'state': 'accepted'}).length == 0" class="center noMore">
+<div ng-show="(quotes | filter: {'state': 'accepted', 'academie': academie.name}).length == 0" class="center noMore">
     <div style="z-index: 1;" class="alert alert-info" role="alert">
     	Er zijn nog geen quotes voor de opleiding {{academie.name}}! <a style="cursor: pointer;" ng-click="back()" class="alert-link">Terug</a>
     </div>

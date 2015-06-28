@@ -1,15 +1,15 @@
 angular.module('wolkidee.controllers').controller('HomeCtrl', function($scope, $meteor, $state, $filter, $stateParams, $timeout){
 	$scope.title = 'test idee';
-	if($stateParams["academie"]){
-		$scope.academie = { name: $stateParams["academie"] }
-		$scope.iso;
-  		$scope.quotes = $filter('filter')($meteor.collection(Quotes), {'state': 'accepted', 'academie': $scope.academie.name});
+	if($stateParams.academie){
+		$scope.academie = { name: $stateParams.academie };
+  		$scope.quotes = $meteor.collection(Quotes);
 	} else {
 		$state.go('home.academie');
 	}
 	
   	var once = true;
     $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
+    	// console.log('ngRepeatFinished');
   	    if(once){
 	  		once = false;
 	  		var elem = document.querySelector('.grid');
@@ -20,7 +20,12 @@ angular.module('wolkidee.controllers').controller('HomeCtrl', function($scope, $
 			$timeout(function(){
 				$scope.setContainerWidth();
 			}, 300);
-  	    } 
+  	    }  else {
+  	    	$timeout(function(){
+  	    		// console.log('relayout');
+				$scope.iso.arrange();
+			}, 1000);
+  	    }
 		$(window).resize(function(){
 			$scope.setContainerWidth();
 		});
@@ -30,10 +35,7 @@ angular.module('wolkidee.controllers').controller('HomeCtrl', function($scope, $
 	});
 
 	$scope.setContainerWidth = function(){
-		$scope.iso.arrange({
-				itemSelector: '.grid-item',
-				layoutMode: 'masonry'
-			})
+		$scope.iso.arrange();
 		$('.grid').css('width', 'auto'); //reset
 		var windowWidth = $(document).width();
 		var blockWidth = $('.quoteCard').outerWidth(true);
@@ -44,5 +46,5 @@ angular.module('wolkidee.controllers').controller('HomeCtrl', function($scope, $
 
 	$scope.back = function(){
 		$state.go('home.academie');
-	}
+	};
 });

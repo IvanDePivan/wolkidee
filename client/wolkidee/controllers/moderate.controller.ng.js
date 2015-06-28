@@ -2,7 +2,6 @@ angular.module('wolkidee.controllers').controller('ModerateCtrl', function($scop
 	$scope.quotes = $meteor.collection(Quotes);
 	$scope.activeState = $state.current.name;
 
-	$scope.iso;
 	var once;
 	$scope.standardTimeout = 800;
 	$scope.updateAfter = 400;
@@ -20,7 +19,12 @@ angular.module('wolkidee.controllers').controller('ModerateCtrl', function($scop
 				}); 
 				once = false;
 				$scope.setContainerWidth();
-			}
+			} else {
+	  	    	$timeout(function(){
+	  	    		// console.log('relayout');
+					$scope.iso.arrange();
+				}, 1000);
+  	    	}
 		});
 
 		$(document).ready(function(){
