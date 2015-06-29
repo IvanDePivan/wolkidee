@@ -3,7 +3,7 @@ angular.module('wolkidee.controllers').controller('OutputCtrl', function($scope,
     var fadeOutClasses = 'animated fadeOutRight';
     var hideClasses = 'hidden';
     var once = true;
-    var frequency = 6000;
+    var frequency = 9000;
 
     var acceptedQuotes = $filter('filter')($meteor.collection(Quotes), {'state': 'accepted'});
     var newQuotes = $filter('filter')($meteor.collection(Quotes), {'state': 'accepted', 'shown': false});
@@ -11,6 +11,7 @@ angular.module('wolkidee.controllers').controller('OutputCtrl', function($scope,
     var count = acceptedQuotes.length;
     var newCount = newQuotes.length;
 
+    $scope.outputCard = "#outputCardContainer";
     $scope.quote = acceptedQuotes[randomNumber()];
     
 
@@ -42,14 +43,23 @@ angular.module('wolkidee.controllers').controller('OutputCtrl', function($scope,
     }
 
     function fadeOut() {
-        $('#testDiv').removeClass(fadeInClasses);
-        $('#testDiv').addClass(fadeOutClasses);
+        $($scope.outputCard).removeClass(fadeInClasses);
+        $($scope.outputCard).addClass(fadeOutClasses);
     }
 
     function fadeIn() {
-        $('#testDiv').removeClass(hideClasses);
-        $('#testDiv').removeClass(fadeOutClasses);
-        $('#testDiv').addClass(fadeInClasses);
+        resizeQuote();
+        center(".thumbnail");
+        $($scope.outputCard).removeClass(hideClasses);
+        $($scope.outputCard).removeClass(fadeOutClasses);
+        $($scope.outputCard).addClass(fadeInClasses);
+    }
+
+    function resizeQuote(){
+        var windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
+        var height = $("#quoteContent").height();
+        var newMaxHeight = windowHeight - height - 20;
+        $(".card-image-output").css({ "max-height": newMaxHeight + 'px' });
     }
 
     function fadeLoop() {

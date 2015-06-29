@@ -32,7 +32,12 @@
   max-height: 250px;
   width: 100%;
   overflow:hidden;
+}
 
+.card-image-output {
+  width: 400px;
+  max-height: 550px; 
+  overflow: hidden;
 }
 
 

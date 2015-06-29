@@ -7,4 +7,18 @@
 	<div style="height: 100%;" ng-app="wolkidee" ui-view>
 	</div>
 	
+	<script type="text/javascript">
+		function center(sizeDiv){
+	        var center = $(".center");
+	        var offsetLeft = $(sizeDiv).width() / 2;
+	        var offsetTop = $(sizeDiv).height() / 2;
+	        var windowOffsetLeft = Math.max(document.documentElement.clientWidth, window.innerWidth || 0) / 2
+	        var windowOffsetTop = Math.max(document.documentElement.clientHeight, window.innerHeight || 0) / 2
+	        var leftPos = windowOffsetLeft - offsetLeft;
+	        var topPos = windowOffsetTop - offsetTop;
+
+	        center.css("left", leftPos + "px");
+	        center.css("top", topPos + "px");
+	    }
+	</script>
 </body>

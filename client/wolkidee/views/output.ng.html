@@ -1,10 +1,10 @@
 <div class="fullScreenContainer">
-	<div id="testDiv" class="center hidden" style="z-index: 10001;">
+	<div id="outputCardContainer" class="center hidden" style="z-index: 10001;">
 		<div class="thumbnail">	
-			<div class="card-image" ng-if="quote.image">
+			<div class="card-image-output" ng-if="quote.image">
 				<img ng-src="{{quote.image || 'http://placehold.it/200x300'}}" class="actual-image">
 			</div>
-			<div style="padding: 5px;">
+			<div id="quoteContent" style="padding: 5px;">
 		      	<h2>{{quote.title || 'Geen titel opgegeven'}}</h2>
 		        <h4>{{quote.name || 'Geen naam opgegeven'}}</h4>
 		        <p>{{quote.quote || 'Geen quote opgegeven'}}</p>
