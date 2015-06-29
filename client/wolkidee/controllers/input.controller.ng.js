@@ -102,6 +102,11 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 			});
 
 			var successFunction = function(result){
+				var link = result.link;
+				var linkArray = link.split('.');
+				linkArray[linkArray.length - 2] = linkArray[linkArray.length - 2] + 'h';
+				link = linkArray.join('.');
+				console.log(link);
 				$scope.insertQuote({
 					'name': $scope.name,
 					'title': $scope.title,

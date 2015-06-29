@@ -1,5 +1,13 @@
 angular.module('wolkidee.controllers').controller('HomeCtrl', function($scope, $meteor, $state, $filter, $stateParams, $timeout){
 	$scope.title = 'test idee';
+
+	function createIsotope(){
+		var elem = document.querySelector('.grid');
+		$scope.iso = new Isotope( elem, {
+			itemSelector: '.grid-item',
+			layoutMode: 'masonry'
+		});
+	}
 	if($stateParams.academie){
 		$scope.academie = { name: $stateParams.academie };
 		$scope.allquotes = $meteor.collection(Quotes);
@@ -10,17 +18,12 @@ angular.module('wolkidee.controllers').controller('HomeCtrl', function($scope, $
         			$scope.quotes = $filter('filter')($scope.allquotes, {'state': 'accepted', 'academie': $scope.academie.name});
 	        		$timeout(function(){
 	        			if($scope.iso){
-	        				var elem = document.querySelector('.grid');
-	        				$scope.iso = new Isotope( elem, {
-								itemSelector: '.grid-item',
-								layoutMode: 'masonry'
-							});
+	        				createIsotope();
 	        				console.log('arrange');
 	        			}
 	        		}, 1000);
   				}
   			});
-			// $scope.quotes = $filter('filter')($meteor.collection(Quotes), {'state': 'accepted', 'academie': $scope.academie.name});
 	} else {
 		$state.go('home.academie');
 	}
@@ -30,11 +33,7 @@ angular.module('wolkidee.controllers').controller('HomeCtrl', function($scope, $
     	console.log('ngRepeatFinished');
   	    if(once){
 	  		once = false;
-	  		var elem = document.querySelector('.grid');
-			$scope.iso = new Isotope( elem, {
-				itemSelector: '.grid-item',
-				layoutMode: 'masonry'
-			});
+	  		createIsotope();
 			$timeout(function(){
 				$scope.setContainerWidth();
 			}, 300);

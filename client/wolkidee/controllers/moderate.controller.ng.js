@@ -6,23 +6,37 @@ angular.module('wolkidee.controllers').controller('ModerateCtrl', function($scop
 	$scope.standardTimeout = 800;
 	$scope.updateAfter = 400;
 
+	Quotes.find().observeChanges({
+		changed: function (id, fields) {
+		console.log('changed: ' + id);
+		// $scope.quotes = $filter('filter')($scope.allquotes, {'state': 'accepted', 'academie': $scope.academie.name});
+		$timeout(function(){
+				console.log('arrange');
+				createIsotope();
+		}, 1000);
+		}
+	});
+
+	function createIsotope(){
+		var elem = document.querySelector('.grid');
+		$scope.iso = new Isotope( elem, {
+			itemSelector: '.grid-item',
+			layoutMode: 'masonry'
+		});
+	}
+
 	update();
 	function update(){
 		once = true;
 		$scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
 	    	if(once){
-	    		var elem = document.querySelector('.grid');
-				$scope.iso = new Isotope( elem, {
-				  // options
-				  itemSelector: '.grid-item',
-				  layoutMode: 'masonry'
-				}); 
+	    		createIsotope();
 				once = false;
 				$scope.setContainerWidth();
 			} else {
 	  	    	$timeout(function(){
 	  	    		// console.log('relayout');
-					$scope.iso.arrange();
+					createIsotope();
 				}, 1000);
   	    	}
 		});
