@@ -13,7 +13,6 @@ angular.module('wolkidee.controllers').controller('OutputCtrl', function($scope,
 
     $scope.outputCard = "#outputCardContainer";
     $scope.quote = acceptedQuotes[randomNumber()];
-    
 
     function randomNumber(limit) {
     	var test = Math.floor(Math.random() * limit);
@@ -48,15 +47,15 @@ angular.module('wolkidee.controllers').controller('OutputCtrl', function($scope,
     }
 
     function fadeIn() {
+        $($scope.outputCard).removeClass(hideClasses);
         resizeQuote();
         center(".thumbnail");
-        $($scope.outputCard).removeClass(hideClasses);
         $($scope.outputCard).removeClass(fadeOutClasses);
         $($scope.outputCard).addClass(fadeInClasses);
     }
 
     function resizeQuote(){
-        var windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0)
+        var windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
         var height = $("#quoteContent").height();
         var newMaxHeight = windowHeight - height - 20;
         $(".card-image-output").css({ "max-height": newMaxHeight + 'px' });
