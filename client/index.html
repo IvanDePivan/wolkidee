@@ -20,5 +20,12 @@
 	        center.css("left", leftPos + "px");
 	        center.css("top", topPos + "px");
 	    }
+	    function imgError(image) {
+	        // image.onerror = null;
+	        console.log('imgError');
+	        setTimeout(function() {
+	           image.src += '?' + +new Date;
+	        }, 1000);
+	    }
 	</script>
 </body>

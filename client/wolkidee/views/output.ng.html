@@ -2,7 +2,7 @@
 	<div id="outputCardContainer" class="center hidden" style="z-index: 10001;">
 		<div class="thumbnail">	
 			<div class="card-image-output" ng-if="quote.image">
-				<img ng-src="{{quote.image || 'http://placehold.it/200x300'}}" class="actual-image">
+				<img ng-src="{{quote.image || 'http://placehold.it/200x300'}}" class="actual-image" onerror='imgError(this);'>
 			</div>
 			<div id="quoteContent" style="padding: 5px;">
 		      	<h2>{{quote.title || 'Geen titel opgegeven'}}</h2>
