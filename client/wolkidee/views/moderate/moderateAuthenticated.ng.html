@@ -8,7 +8,9 @@
         </div>
     </card>
     <div ng-show="(quotes | filter: {'state': 'pending'}).length == 0" class="center noMore">
-        <div class="alert alert-info" role="alert">Er zijn geen te modereren quotes meer!</div>
+        <div style="z-index: 100; width:336px; height:52px;" class="alert alert-info" role="alert">
+            Er zijn nog geen quotes meer om te moderaten!
+        </div>
     </div>
 </cards>
 <modnav></modnav>
