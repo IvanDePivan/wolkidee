@@ -3,8 +3,8 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 	$scope.name = "";
 	$scope.title = "";
 	$scope.quote = "";
-	$scope.stop;
-	$scope.academieInertObject = { name: "Academie" }
+	// $scope.stop;
+	$scope.academieInertObject = { name: "Academie" };
 
 	var nameReqs = {
 		scopeVar: "name",
@@ -38,14 +38,14 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 	$scope.academie = $scope.academieInertObject; //<--- de knop begint op "Academie"
 
 	$scope.choseAcademie = function(selectedAcademie){
-		$scope.academie= selectedAcademie
-	}
+		$scope.academie= selectedAcademie;
+	};
 
 	$scope.ticButtonClick = function(){
 		var good = true;
 		var uploadImage;
 
-		$scope.chosenImage;
+		// $scope.chosenImage;
 
 		good = checkFields([$scope.name, $scope.title, $scope.quote], [nameReqs, titleReqs, quoteReqs]);
 
@@ -81,12 +81,12 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 			cancelButtonText: "Nee!",   
 			closeOnConfirm: false,   closeOnCancel: false 
 		}, function(isConfirm){   
-				if (isConfirm) {   
-					$scope.imageUploadOrNot();
-				} else {    
-					swal.close();
-				} 
-			});
+			if (isConfirm) {   
+				$scope.imageUploadOrNot();
+			} else {    
+				swal.close();
+			} 
+		});
 			
 		}
 	};
@@ -100,7 +100,8 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 				allowOutsideClick: false,
 				showConfirmButton: false,
 			});
-			uploadToImgur($scope.chosenImage).then(function(result){
+
+			var successFunction = function(result){
 				$scope.insertQuote({
 					'name': $scope.name,
 					'title': $scope.title,
@@ -110,9 +111,24 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 					'academie': $scope.academie.name,
 					'shown': false
 				});
-			}, function(error){
-				swal({ 	title: 'Oeps!', text: error.data.error, type: "error" });
-				console.error(error);
+			};
+			uploadToImgur($scope.chosenImage).then(successFunction, function(error){
+				console.error(error);			
+				swal({   
+					title: "Fout bij uploaden, opnieuw proberen?",   
+					html: true, 
+					showCancelButton: true,   
+					confirmButtonColor: "#337ab7",   
+					confirmButtonText: "Ja",   
+					cancelButtonText: "Nee!",   
+					closeOnConfirm: false,   closeOnCancel: true 
+				}, function(isConfirm){   
+					if (isConfirm) {   
+						$scope.imageUploadOrNot();
+					} else {    
+						swal.close();
+					} 
+				});
 			});
 		} else {
 			$scope.insertQuote({
@@ -124,46 +140,52 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 				'shown': false
 			});
 		}
-	}
+	};
 
 	$scope.insertQuote = function(quote){
 		Quotes.insert(quote,  
 		function(){
-			swal({ title: "Gelukt!", text: "Jou quote is verstuurd!", type: "success" }, function(){
-					$scope.name = ""
-					$scope.title = ""
-					$scope.quote = ""
+			swal({ title: "Gelukt!", text: "Jou quote is verstuurd!", type: "success", confirmButtonColor: "#337ab7"}, function(){
+					$scope.name = "";
+					$scope.title = "";
+					$scope.quote = "";
 					$scope.academie = $scope.academieInertObject;
 					$scope.$apply();
 					$('#chooseFileImage').hide();
-					document.getElementById("uploadBtn").value = ""
-					$scope.chosenImage = undefined
+					document.getElementById("uploadBtn").value = "";
+					$scope.chosenImage = undefined;
 			});
 		});		
-	}
+	};
 
 	//TODO IH: find a better place for the apikey/this function
 	function uploadToImgur(image){
 		var deferred = $q.defer();
-		Imgur.upload({
-			image: image,
-			apiKey: '7ef579444b40c32',
-		}, function(error, data){
-			if(error){
-				deferred.reject(error);
-				return deferred.promise;
-			}
-			deferred.resolve(data);
-		});
+		try {
+			Imgur.upload({
+				image: image,
+				apiKey: '7ef579444b40c32',
+			}, function(error, data){
+				if(error){
+					deferred.reject(error);
+					return deferred.promise;
+				}
+				deferred.resolve(data);
+			});
+		} catch(err) {
+			console.log(err);
+			//return uploadToImgur(image);
+			deferred.reject({data: {error: err}});
+		}
 		return deferred.promise;
 	}
 
 	function checkFields(fields, options){
-		var result = true
+		var result = true;
 		for (var i = fields.length - 1; i >= 0; i--) {
 			if(!checkValid(fields[i], options[i])) {
 				fields[i] = "";
-				result = false
+				result = false;
 			}
 		}
 		if($scope.academie.name === $scope.academieInertObject.name){
