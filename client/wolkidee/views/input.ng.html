@@ -2,7 +2,7 @@
 	<div class="inputCenter center">
 		<form style="height: 100%;">
 		  <div id="nameFormGroup" class="form-group">
-		    <input id="nameInput" type="text" class="form-control input-lg myInput" placeholder='Voor en achternaam' ng-model="name">
+		    <input id="nameInput" type="text" class="form-control input-lg myInput" placeholder='Voor en achternaam' ng-model="name" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
 		  </div>
 		  <!-- Single button -->
 		<div class="btn-group" style="width:100%;">
@@ -17,10 +17,10 @@
 		  </ul>
 		</div>
 		  <div id="titleFormGroup" style="margin-top: 10px;" class="form-group">
-		    <input id="titleInput" ng-model="title" type="text" class="form-control input-lg myInput" placeholder='Titel, bijvoorbeeld "Dag Avans!"'>
+		    <input id="titleInput" ng-model="title" type="text" class="form-control input-lg myInput" placeholder='Titel, bijvoorbeeld "Dag Avans!"' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
 		  </div>
 		  <div id="quoteFormGroup" class="form-group" style="height: 50%;">
-		    <textarea id="quoteInput" ng-model="quote" type="text" class="form-control bigTextInput myInput" placeholder="Je wens, bericht, anekdote of groet."></textarea>
+		    <textarea id="quoteInput" ng-model="quote" type="text" class="form-control bigTextInput myInput" placeholder="Je wens, bericht, anekdote of groet." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
 		  </div>
 		  <div class="form-group ">
 		  	<button type="button" ng-click="ticButtonClick()" class="btn btn-default btn-lg roundInputButton">

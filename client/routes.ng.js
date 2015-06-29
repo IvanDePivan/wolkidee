@@ -1,5 +1,5 @@
 angular.module("wolkidee").config(function($urlRouterProvider, $stateProvider, $locationProvider) {
-    var development = false;
+    var development = true;
     $locationProvider.html5Mode(true);
 
     $stateProvider

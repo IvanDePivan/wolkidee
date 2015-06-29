@@ -22,6 +22,7 @@
 
 .erik {
 	margin: auto;
+	width: 230px;
 }
 
 .bigText {
@@ -44,4 +45,8 @@
 
 .noMore {
 	text-align:center;
+}
+
+#navBlock {
+	left:50%;
 }

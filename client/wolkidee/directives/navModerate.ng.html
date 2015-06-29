@@ -1,10 +1,12 @@
 <div class="myNavBar">
-	<ul class="nav nav-pills center">
-		<li role="presentation" class="{{activeState == 'moderate.authenticated' ? 'active tabBarButton': 'tabBarButton navPillNormal'}}">
-			<a class="pacifico bigText" ng-click="goToModerate()">Moderate</a>
-		</li>
-		<li role="presentation" style="margin-left:0px;" class="{{activeState == 'moderate.recover' ? 'active tabBarButton': 'tabBarButton navPillNormal'}}">
-			<a class="pacifico bigText" ng-click="goToRecover()">Herstellen</a>
-		</li>
-	</ul>
+	<div class="erik">
+		<ul id="navBlock" class="nav nav-pills">
+			<li role="presentation" class="{{activeState == 'moderate.authenticated' ? 'active tabBarButton': 'tabBarButton navPillNormal'}}">
+				<a class="pacifico bigText" ng-click="goToModerate()">Moderate</a>
+			</li>
+			<li role="presentation" style="margin-left:0px;" class="{{activeState == 'moderate.recover' ? 'active tabBarButton': 'tabBarButton navPillNormal'}}">
+				<a class="pacifico bigText" ng-click="goToRecover()">Herstellen</a>
+			</li>
+		</ul>
+	</div>
 </div>
