@@ -82,7 +82,7 @@ Meteor.startup(function () {
         'title': 'Notice me senpai',
         'name':  'do\'nt stop me now!',
         'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
-        'image': 'http://i.imgur.com/G4868vv.jpg',
+        'image': 'http://i.imgur.com/PlweEdi.jpg',
         'state': 'accepted',
         'shown': false,
         'academie': 'AI&I'
@@ -91,7 +91,7 @@ Meteor.startup(function () {
         'title': 'Notice me senpai',
         'name':  'do\'nt stop me now!',
         'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
-        'image': 'http://i.imgur.com/G4868vv.jpg',
+        'image': 'http://i.imgur.com/UOtnDMB.gif',
         'state': 'accepted',
         'shown': false,
         'academie': 'AI&I'
@@ -100,7 +100,7 @@ Meteor.startup(function () {
         'title': 'Notice me senpai',
         'name':  'do\'nt stop me now!',
         'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
-        'image': 'http://i.imgur.com/G4868vv.jpg',
+        'image': 'http://i.imgur.com/o0GQK.gif',
         'state': 'accepted',
         'shown': false,
         'academie': 'AI&I'
@@ -109,7 +109,7 @@ Meteor.startup(function () {
         'title': 'Notice me senpai',
         'name':  'do\'nt stop me now!',
         'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
-        'image': 'http://i.imgur.com/G4868vv.jpg',
+        'image': 'http://i.imgur.com/QyAt9Vx.gif',
         'state': 'accepted',
         'shown': false,
         'academie': 'AI&I'
@@ -118,7 +118,7 @@ Meteor.startup(function () {
         'title': 'Notice me senpai',
         'name':  'do\'nt stop me now!',
         'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
-        'image': 'http://i.imgur.com/G4868vv.jpg',
+        'image': 'http://i.imgur.com/Tdlth9s.jpg',
         'state': 'accepted',
         'shown': false,
         'academie': 'AI&I'
@@ -127,7 +127,7 @@ Meteor.startup(function () {
         'title': 'Notice me senpai',
         'name':  'do\'nt stop me now!',
         'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
-        'image': 'http://i.imgur.com/G4868vv.jpg',
+        'image': 'http://i.imgur.com/6JukZ5r.jpg',
         'state': 'accepted',
         'shown': false,
         'academie': 'AI&I'
@@ -136,7 +136,7 @@ Meteor.startup(function () {
         'title': 'Notice me senpai',
         'name':  'do\'nt stop me now!',
         'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
-        'image': 'http://i.imgur.com/G4868vv.jpg',
+        'image': 'http://i.imgur.com/2Gq4Und.jpg',
         'state': 'accepted',
         'shown': false,
         'academie': 'AI&I'
@@ -145,7 +145,7 @@ Meteor.startup(function () {
         'title': 'Notice me senpai',
         'name':  'do\'nt stop me now!',
         'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
-        'image': 'http://i.imgur.com/G4868vv.jpg',
+        'image': 'http://i.imgur.com/LReEK3G.png',
         'state': 'accepted',
         'shown': false,
         'academie': 'AI&I'
@@ -154,7 +154,7 @@ Meteor.startup(function () {
         'title': 'Notice me senpai',
         'name':  'do\'nt stop me now!',
         'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
-        'image': 'http://i.imgur.com/G4868vv.jpg',
+        'image': 'http://i.imgur.com/mzCsZRe.jpg',
         'state': 'accepted',
         'shown': false,
         'academie': 'AI&I'
@@ -163,7 +163,7 @@ Meteor.startup(function () {
         'title': 'Notice me senpai',
         'name':  'do\'nt stop me now!',
         'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
-        'image': 'http://i.imgur.com/G4868vv.jpg',
+        'image': 'http://i.imgur.com/xsX5pyC.jpg',
         'state': 'accepted',
         'shown': false,
         'academie': 'AI&I'
@@ -172,7 +172,7 @@ Meteor.startup(function () {
         'title': 'Notice me senpai',
         'name':  'do\'nt stop me now!',
         'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
-        'image': 'http://i.imgur.com/G4868vv.jpg',
+        'image': 'http://i.imgur.com/2IvlSBc.jpg',
         'state': 'accepted',
         'shown': false,
         'academie': 'AI&I'
@@ -181,7 +181,7 @@ Meteor.startup(function () {
         'title': 'Notice me senpai',
         'name':  'do\'nt stop me now!',
         'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
-        'image': 'http://i.imgur.com/G4868vv.jpg',
+        'image': 'http://i.imgur.com/6xMopeR.jpgk',
         'state': 'accepted',
         'shown': false,
         'academie': 'AVD'
