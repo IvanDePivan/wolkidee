@@ -1,5 +1,5 @@
-<div class="inputContainer center" style="height: 100%;">
-	<div class="inputCenter">
+<div class="inputContainer" style="height: 100%;">
+	<div class="inputCenter center">
 		<form style="height: 100%;">
 		  <div id="nameFormGroup" class="form-group">
 		    <input id="nameInput" type="text" class="form-control input-lg myInput" placeholder='Voor en achternaam' ng-model="name">
@@ -55,6 +55,13 @@
 		    reader.readAsDataURL(this.files[0]);
 		  }
 	};
+
+	$(document).ready(function(){
+    	center(".center");
+  	});
+  	$(window).resize(function(){
+    	center(".center");
+  	});
 
 	$(".myInput").focus(function(){
 

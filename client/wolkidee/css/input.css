@@ -59,8 +59,8 @@ body {
     opacity: 0;
     filter: alpha(opacity=0);
 }
-/*
-.center{
+
+.oldCenter{
   display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
@@ -90,7 +90,7 @@ body {
     -ms-flex-align: center;
     align-items: center;
 }
-*/
+
 
 .center {
     position: absolute;
