@@ -2,14 +2,32 @@ angular.module('wolkidee.controllers').controller('HomeCtrl', function($scope, $
 	$scope.title = 'test idee';
 	if($stateParams.academie){
 		$scope.academie = { name: $stateParams.academie };
+		$scope.allquotes = $meteor.collection(Quotes);
   		$scope.quotes = $meteor.collection(Quotes);
+  			Quotes.find().observeChanges({
+  				changed: function (id, fields) {
+	        		console.log('changed: ' + id);
+        			$scope.quotes = $filter('filter')($scope.allquotes, {'state': 'accepted', 'academie': $scope.academie.name});
+	        		$timeout(function(){
+	        			if($scope.iso){
+	        				var elem = document.querySelector('.grid');
+	        				$scope.iso = new Isotope( elem, {
+								itemSelector: '.grid-item',
+								layoutMode: 'masonry'
+							});
+	        				console.log('arrange');
+	        			}
+	        		}, 1000);
+  				}
+  			});
+			// $scope.quotes = $filter('filter')($meteor.collection(Quotes), {'state': 'accepted', 'academie': $scope.academie.name});
 	} else {
 		$state.go('home.academie');
 	}
 	
   	var once = true;
     $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
-    	// console.log('ngRepeatFinished');
+    	console.log('ngRepeatFinished');
   	    if(once){
 	  		once = false;
 	  		var elem = document.querySelector('.grid');
@@ -20,11 +38,6 @@ angular.module('wolkidee.controllers').controller('HomeCtrl', function($scope, $
 			$timeout(function(){
 				$scope.setContainerWidth();
 			}, 300);
-  	    }  else {
-  	    	$timeout(function(){
-  	    		// console.log('relayout');
-				$scope.iso.arrange();
-			}, 1000);
   	    }
 		$(window).resize(function(){
 			$scope.setContainerWidth();
