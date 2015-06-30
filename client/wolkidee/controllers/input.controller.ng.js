@@ -91,7 +91,7 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 					swal.close();
 				} 
 			});
-			centerSweetAlert(false)	
+			centerSweetAlert(false);
 		}
 	};
 
@@ -104,19 +104,16 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 				allowOutsideClick: false,
 				showConfirmButton: false,
 			});
-			centerSweetAlert(false)	
+			centerSweetAlert(false);
 
 			var successFunction = function(result){
-				var link = result.link;
-				var linkArray = link.split('.');
-				linkArray[linkArray.length - 2] = linkArray[linkArray.length - 2] + 'h';
-				link = linkArray.join('.');
-				console.log(link);
+
 				$scope.insertQuote({
 					'name': $scope.name,
 					'title': $scope.title,
 					'quote': $scope.quote,
 					'image': result.link,
+					'thumbnail': Imgur.toThumbnail(result.link, Imgur.LARGE_THUMBNAIL),
 					'state': 'pending',
 					'academie': $scope.academie.name,
 					'shown': false
@@ -139,7 +136,7 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 						swal.close();
 					} 
 				});
-				centerSweetAlert(false)	
+				centerSweetAlert(false);
 			});
 		} else {
 			$scope.insertQuote({
@@ -166,17 +163,16 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 					document.getElementById("uploadBtn").value = "";
 					$scope.chosenImage = undefined;
 			});
-			centerSweetAlert(false)	
+			centerSweetAlert(false);
 		});		
 	};
 
-	//TODO IH: find a better place for the apikey/this function
 	function uploadToImgur(image){
 		var deferred = $q.defer();
 		try {
 			Imgur.upload({
 				image: image,
-				apiKey: '7ef579444b40c32',
+				apiKey: '7ef579444b40c32', //TODO IH: new api before release
 			}, function(error, data){
 				if(error){
 					deferred.reject(error);

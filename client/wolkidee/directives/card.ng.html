@@ -1,6 +1,6 @@
 <div class="grid-item thumbnail quoteCard" isotope-item="isotope-item" on-finish-render="ngRepeatFinished" id="{{quote._id._str || quote._id}}">
   <div ng-if="quote.image" class="card-image">
-    <img ng-src="{{quote.image}}" class="actual-image" onerror='imgError(this);'>
+    <img ng-src="{{quote.thumbnail}}" class="actual-image" onerror='imgError(this);'>
   </div>
   <div class="caption">
       <h2>{{quote.title}}</h2>
