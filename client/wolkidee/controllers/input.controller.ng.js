@@ -52,42 +52,46 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 		if(good === true) {
 			var imageSource;
 
-		var images = document.getElementById("uploadBtn").files;
-		if (images && images[0]) {
-		    var reader = new FileReader();
-		    reader.onload = function (e) {
-		      $scope.chosenImage = e.target.result;
-		      $('#showChosenImage')
-		       .attr('src', $scope.chosenImage)
-		       .show();
-		    };
-		    reader.readAsDataURL(images[0]);
-		}
+			var images = document.getElementById("uploadBtn").files;
+			if (images && images[0]) {
+			    var reader = new FileReader();
+			    reader.onload = function (e) {
+			      $scope.chosenImage = e.target.result;
+			      $('#showChosenImage')
+			       .attr('src', $scope.chosenImage)
+			       .show();
+			    };
+			    reader.readAsDataURL(images[0]);
+			}
+			var imageSelected = false;
+			if(images && images[0]){
+				imageSelected = true;
+			}
 
-		var quoteTemplate = '<div class="grid-item-swal thumbnail">';
-		quoteTemplate += (images && images[0] ? '<div class="card-image"><img id="showChosenImage" class="actual-image"></div>': '');
-		quoteTemplate += '<div class="caption"><h4>' + $scope.name + '</h4><h4>' + $scope.title +'</h4>';
-		quoteTemplate += '<p>' + $scope.quote + '</p></div>';
-		quoteTemplate += '</div><br />';
-		quoteTemplate += '<p style="color: black;">Is dit goed?</p><br />';
+			var quoteTemplate = '<div id="heightParam" class="grid-item-swal thumbnail">';
+			quoteTemplate += (imageSelected ? '<div class="card-image"><img id="showChosenImage" onload="centerSweetAlert(true)" class="actual-image"></div>': '');
+			quoteTemplate += '<div class="caption"><h4>' + $scope.name + '</h4><h4>' + $scope.title +'</h4>';
+			quoteTemplate += '<p>' + $scope.quote + '</p></div>';
+			quoteTemplate += '</div><br />';
+			quoteTemplate += '<p style="color: black;">Is dit goed?</p><br />';
 
-		swal({   
-			title: "Je quote zal er zo uit zien:",   
-			text: quoteTemplate,   
-			html: true, 
-			showCancelButton: true,   
-			confirmButtonColor: "#337ab7",   
-			confirmButtonText: "Ja, verstuur maar!",   
-			cancelButtonText: "Nee!",   
-			closeOnConfirm: false,   closeOnCancel: false 
-		}, function(isConfirm){   
-			if (isConfirm) {   
-				$scope.imageUploadOrNot();
-			} else {    
-				swal.close();
-			} 
-		});
-			
+			swal({   
+				title: "Je quote zal er zo uit zien:",   
+				text: quoteTemplate,   
+				html: true, 
+				showCancelButton: true,   
+				confirmButtonColor: "#337ab7",   
+				confirmButtonText: "Ja, verstuur maar!",   
+				cancelButtonText: "Nee!",   
+				closeOnConfirm: false,   closeOnCancel: false 
+			}, function(isConfirm){   
+				if (isConfirm) {   
+					$scope.imageUploadOrNot();
+				} else {    
+					swal.close();
+				} 
+			});
+			centerSweetAlert(false)	
 		}
 	};
 
@@ -100,6 +104,7 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 				allowOutsideClick: false,
 				showConfirmButton: false,
 			});
+			centerSweetAlert(false)	
 
 			var successFunction = function(result){
 				var link = result.link;
@@ -134,6 +139,7 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 						swal.close();
 					} 
 				});
+				centerSweetAlert(false)	
 			});
 		} else {
 			$scope.insertQuote({
@@ -160,6 +166,7 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 					document.getElementById("uploadBtn").value = "";
 					$scope.chosenImage = undefined;
 			});
+			centerSweetAlert(false)	
 		});		
 	};
 
@@ -240,4 +247,30 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 			return true;
 		}
 	}
+
+	$scope.countChar = function() {
+      var len = $scope.quote.length;
+      var value = 400 - len;
+      $('#charNum').text(value);
+      if(value < 100 && value > -1 ){
+      	if(($('#charNum').hasClass("label-primary") || $('#charNum').hasClass("label-danger"))){
+      		$('#charNum').removeClass("label-primary");
+      		$('#charNum').removeClass("label-danger");
+      		$('#charNum').addClass("label-warning");
+      	}
+      }
+      else if(value < 0){
+      	if($('#charNum').hasClass("label-primary") || $('#charNum').hasClass("label-warning")){
+      		$('#charNum').removeClass("label-primary");
+      		$('#charNum').removeClass("label-warning");
+      		$('#charNum').addClass("label-danger");
+      	}
+      } else {
+      	if($('#charNum').hasClass("label-danger") || $('#charNum').hasClass("label-warning") && value > 99){
+      		$('#charNum').removeClass("label-danger");
+      		$('#charNum').removeClass("label-warning");
+      		$('#charNum').addClass("label-primary");
+      	}
+      }
+    };
 });

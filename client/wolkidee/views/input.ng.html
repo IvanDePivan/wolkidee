@@ -20,7 +20,8 @@
 		    <input id="titleInput" ng-model="title" type="text" class="form-control input-lg myInput" placeholder='Titel, bijvoorbeeld "Dag Avans!"' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
 		  </div>
 		  <div id="quoteFormGroup" class="form-group" style="height: 50%;">
-		    <textarea id="quoteInput" ng-model="quote" type="text" class="form-control bigTextInput myInput" placeholder="Je wens, bericht, anekdote of groet." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+		    <textarea id="quoteInput" ng-model="quote" type="text" class="form-control bigTextInput myInput" placeholder="Je wens, bericht, anekdote of groet." autocomplete="off" ng-keyup="countChar()" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+		    <br /><span style="font-size:20px;" id="charNum" class="label label-primary">400</span>
 		  </div>
 		  <div class="form-group ">
 		  	<button type="button" ng-click="ticButtonClick()" class="btn btn-default btn-lg roundInputButton">
@@ -59,6 +60,24 @@
 	$(document).ready(function(){
     	center(".center");
   	});
+
+	function centerSweetAlert(buttonMargin){
+		var windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+		var height = $(".sweet-alert").height() + 34;
+		var offset = (windowHeight / 2) - (height / 2);
+		$(".sweet-alert").css("margin-top", "0px");
+		$(".sweet-alert").css("position", "absolute");
+		if(buttonMargin){
+			$(".cancel").css("margin-top", "0px");
+			$(".confirm").css("margin-top", "0px");
+			$(".sweet-alert").css("top", ( offset + 13 ) + "px");
+		} else {
+			$(".cancel").css("margin-top", "26px");
+			$(".confirm").css("margin-top", "26px");
+			$(".sweet-alert").css("top", offset + "px");
+		}
+	}
+
   	$(window).resize(function(){
     	center(".center");
   	});
