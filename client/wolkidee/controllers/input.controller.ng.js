@@ -5,6 +5,7 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 	$scope.quote = "";
 	// $scope.stop;
 	$scope.academieInertObject = { name: "Academie" };
+	$scope.uploading = false;
 
 	var nameReqs = {
 		scopeVar: "name",
@@ -70,8 +71,8 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 
 			var quoteTemplate = '<div id="heightParam" class="grid-item-swal thumbnail">';
 			quoteTemplate += (imageSelected ? '<div class="card-image"><img id="showChosenImage" onload="centerSweetAlert(true)" class="actual-image"></div>': '');
-			quoteTemplate += '<div class="caption frutiger"><h4>' + $scope.name + '</h4><h4>' + $scope.title +'</h4>';
-			quoteTemplate += '<p>' + $scope.quote + '</p></div>';
+			quoteTemplate += '<div class="caption frutiger"><h4>' + $scope.name + '</h4><h4 class="avansRood">' + $scope.title +'</h4>';
+			quoteTemplate += '<p class="verdana">' + $scope.quote + '</p></div>';
 			quoteTemplate += '</div><br />';
 			quoteTemplate += '<p style="color: black;">Is dit goed?</p><br />';
 
@@ -85,8 +86,10 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 				cancelButtonText: "Nee!",   
 				closeOnConfirm: false,   closeOnCancel: false 
 			}, function(isConfirm){   
-				if (isConfirm) {   
-					$scope.imageUploadOrNot();
+				if (isConfirm) {
+					if(!$scope.uploading){
+						$scope.imageUploadOrNot();
+					}  
 				} else {    
 					swal.close();
 				} 
@@ -107,7 +110,6 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 			centerSweetAlert(false);
 
 			var successFunction = function(result){
-
 				$scope.insertQuote({
 					'name': $scope.name,
 					'title': $scope.title,
@@ -120,6 +122,7 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 				});
 			};
 			uploadToImgur($scope.chosenImage).then(successFunction, function(error){
+				$scope.uploading = false;
 				console.error(error);			
 				swal({   
 					title: "Fout bij uploaden, opnieuw proberen?",   
@@ -130,8 +133,10 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 					cancelButtonText: "Nee!",   
 					closeOnConfirm: false,   closeOnCancel: true 
 				}, function(isConfirm){   
-					if (isConfirm) {   
-						$scope.imageUploadOrNot();
+					if (isConfirm) {
+						if(!$scope.uploading){
+							$scope.imageUploadOrNot();
+						}   
 					} else {    
 						swal.close();
 					} 
@@ -151,12 +156,13 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 	};
 
 	$scope.insertQuote = function(quote){
-
+		$scope.uploading = false;
 		Quotes.insert(quote,  
 		function(){
 			$scope.name = "";
 			$scope.title = "";
 			$scope.quote = "";
+			$scope.countChar();
 			$scope.academie = $scope.academieInertObject;
 			$scope.$apply();
 			$('#chooseFileImage').hide();
@@ -168,6 +174,7 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 	};
 
 	function uploadToImgur(image){
+		$scope.uploading = true;
 		var deferred = $q.defer();
 		try {
 			Imgur.upload({

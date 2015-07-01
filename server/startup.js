@@ -13,6 +13,7 @@ Meteor.startup(function () {
       { 'name': "AVB" },
       { 'name': "AVD" },
       { 'name': "AFM" },
+      { 'name': "ASB" }
     ];
 
     for (var i = 0; i < academies.length; i++)
