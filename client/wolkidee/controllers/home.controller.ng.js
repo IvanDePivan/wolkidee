@@ -1,4 +1,4 @@
-angular.module('wolkidee.controllers').controller('HomeCtrl', function($scope, $meteor, $state, $filter, $stateParams, $timeout){
+angular.module('wolkidee.controllers').controller('HomeCtrl', function($window, $scope, $meteor, $state, $filter, $stateParams, $timeout){
 
 	function createIsotope(){
 		console.log('createIsotope');
@@ -59,6 +59,9 @@ angular.module('wolkidee.controllers').controller('HomeCtrl', function($scope, $
 		$(window).resize(function(){
 			$scope.setContainerWidth();
 		});
+		$window.onload = function(){
+			console.log('ddoiudoahj');
+		};
 		$(window).load(function(){
 			console.log('window load');
 			swal.close();
