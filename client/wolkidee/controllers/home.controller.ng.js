@@ -79,13 +79,15 @@ angular.module('wolkidee.controllers').controller('HomeCtrl', function($window, 
 	
 	$scope.setContainerWidth = function(){
 		console.log('setContainerWidth');
-		$scope.iso.arrange();
-		$('.grid').css('width', 'auto'); //reset
-		var windowWidth = $(document).width();
-		var blockWidth = $('.quoteCard').outerWidth(true);
-		var maxBoxPerRow = Math.floor(windowWidth / blockWidth);
-		var newWidth = Math.floor(maxBoxPerRow * blockWidth);
-		$('.grid').width(newWidth);
+		if($scope.iso){
+			$scope.iso.arrange();
+			$('.grid').css('width', 'auto'); //reset
+			var windowWidth = $(document).width();
+			var blockWidth = $('.quoteCard').outerWidth(true);
+			var maxBoxPerRow = Math.floor(windowWidth / blockWidth);
+			var newWidth = Math.floor(maxBoxPerRow * blockWidth);
+			$('.grid').width(newWidth);
+		} 
 	};
 
 	$scope.back = function(){
