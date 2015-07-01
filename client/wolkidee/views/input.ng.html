@@ -17,17 +17,17 @@
 		  </ul>
 		</div>
 		  <div id="titleFormGroup" style="margin-top: 10px;" class="form-group">
-		    <input id="titleInput" ng-model="title" type="text" class="form-control input-lg myInput" placeholder='Titel, bijvoorbeeld "Dag Avans!"' autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+		    <input id="titleInput" ng-model="title" type="text" class="form-control input-lg myInput" placeholder='Titel, bijvoorbeeld "Dag Avans!"' autocomplete="off" autocorrect="off" autocapitalize="off" style="text-transform:uppercase" spellcheck="false">
 		  </div>
 		  <div id="quoteFormGroup" class="form-group" style="height: 50%;">
 		    <textarea id="quoteInput" ng-model="quote" type="text" class="form-control bigTextInput myInput" placeholder="Je wens, bericht, anekdote of groet." autocomplete="off" ng-keyup="countChar()" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
 		    <br /><span style="font-size:20px;" id="charNum" class="label label-primary">400</span>
 		  </div>
 		  <div class="form-group ">
-		  	<button type="button" ng-click="ticButtonClick()" class="btn btn-default btn-lg roundInputButton">
+		  	<button type="button" ng-click="ticButtonClick()" class="btn btn-primary btn-lg roundInputButton">
 			  <span class="glyphicon glyphicon-ok imageButtonGlyph" aria-hidden="true"></span>
 			</button>
-			<button type="button" class="fileUpload btn btn-default btn-lg roundInputButton">
+			<button type="button" class="fileUpload btn btn-primary btn-lg roundInputButton">
 				<span class="glyphicon glyphicon-camera imageButtonGlyph" aria-hidden="true"></span>
 			    <input id="uploadBtn" style="width:100%; height: 100%;" type="file" accept="image/*" class="upload" />
 			</button>

@@ -51,7 +51,7 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 
 		if(good === true) {
 			var imageSource;
-
+			$scope.title = $scope.title.toUpperCase();
 			var images = document.getElementById("uploadBtn").files;
 			if (images && images[0]) {
 			    var reader = new FileReader();
@@ -70,7 +70,7 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 
 			var quoteTemplate = '<div id="heightParam" class="grid-item-swal thumbnail">';
 			quoteTemplate += (imageSelected ? '<div class="card-image"><img id="showChosenImage" onload="centerSweetAlert(true)" class="actual-image"></div>': '');
-			quoteTemplate += '<div class="caption"><h4>' + $scope.name + '</h4><h4>' + $scope.title +'</h4>';
+			quoteTemplate += '<div class="caption frutiger"><h4>' + $scope.name + '</h4><h4>' + $scope.title +'</h4>';
 			quoteTemplate += '<p>' + $scope.quote + '</p></div>';
 			quoteTemplate += '</div><br />';
 			quoteTemplate += '<p style="color: black;">Is dit goed?</p><br />';
@@ -239,6 +239,7 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 					text: "Het veld '" + arg.prettyName + "' mag maximaal " + arg.maxCharacters + " karakters bevatten!", 
 					type: "error",
 					confirmButtonColor: "#337ab7"});
+				centerSweetAlert(false);
 		}else {
 			return true;
 		}

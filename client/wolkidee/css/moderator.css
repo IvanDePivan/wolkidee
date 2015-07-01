@@ -16,6 +16,14 @@
 	font-family: Pacifico;
 }
 
+.frutiger {
+	font-family: Frutiger;
+}
+
+.avansRood {
+	color: #C6002A;
+}
+
 .float-left {
 	float: left;
 }
