@@ -99,7 +99,7 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 		if($scope.chosenImage){
 			swal({
 				title: 'Moment',
-				text: 'Je quote/afbeelding wordt geupload.',
+				text: 'Je quote/afbeelding wordt geupload, Dit kan even duren.',
 				allowEscapeKey: false,
 				allowOutsideClick: false,
 				showConfirmButton: false,
@@ -151,18 +151,18 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 	};
 
 	$scope.insertQuote = function(quote){
+
 		Quotes.insert(quote,  
 		function(){
-			swal({ title: "Gelukt!", text: "Jou quote is verstuurd!", type: "success", confirmButtonColor: "#337ab7"}, function(){
-					$scope.name = "";
-					$scope.title = "";
-					$scope.quote = "";
-					$scope.academie = $scope.academieInertObject;
-					$scope.$apply();
-					$('#chooseFileImage').hide();
-					document.getElementById("uploadBtn").value = "";
-					$scope.chosenImage = undefined;
-			});
+			$scope.name = "";
+			$scope.title = "";
+			$scope.quote = "";
+			$scope.academie = $scope.academieInertObject;
+			$scope.$apply();
+			$('#chooseFileImage').hide();
+			document.getElementById("uploadBtn").value = "";
+			$scope.chosenImage = undefined;
+			swal({ title: "Gelukt!", text: "Jou quote is verstuurd!", type: "success", confirmButtonColor: "#337ab7"});
 			centerSweetAlert(false);
 		});		
 	};
