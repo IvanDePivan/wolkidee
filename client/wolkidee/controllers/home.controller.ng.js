@@ -54,7 +54,7 @@ angular.module('wolkidee.controllers').controller('HomeCtrl', function($window, 
 	  		createIsotope();
 			$timeout(function(){
 				$scope.setContainerWidth();
-			}, 300);
+			}, 1000);
   	    }
 		$(window).resize(function(){
 			$scope.setContainerWidth();
