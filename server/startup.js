@@ -103,8 +103,8 @@ Meteor.startup(function () {
         'title': 'Notice me senpai',
         'name':  'do\'nt stop me now!',
         'quote': 'It\'s not like I like making up quotes baka-senpai!~~ uguu. Stop being tsundere onii-chan.',
-        'image': 'http://i.imgur.com/o0GQK.gif',
-        'thumbnail': 'http://i.imgur.com/o0GQKl.gif',
+        'image': 'http://i.imgur.com/YhGQeHl.jpg',
+        'thumbnail': 'http://i.imgur.com/YhGQeHll.jpg',
         'state': 'accepted',
         'shown': false,
         'academie': 'AI&I'
