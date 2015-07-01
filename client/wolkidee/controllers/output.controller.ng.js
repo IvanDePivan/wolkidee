@@ -60,22 +60,20 @@ angular.module('wolkidee.controllers').controller('OutputCtrl', function($scope,
         var newMaxHeight = windowHeight - height - 20;
         $(".card-image-output").css({ "max-height": newMaxHeight + 'px' });
     }
-
+    var looptimes = 0;
     function fadeLoop() {
         setInterval(function() {
-            fadeOut();
-            setTimeout(function(){
-            	getAcceptedQuotes();
-                getNewQuotes();
-            	countQuotes();
-            	nextQuote();
-            }, 1000);
+                fadeOut();
+                setTimeout(function(){
+                    getAcceptedQuotes();
+                    getNewQuotes();
+                    countQuotes();
+                    nextQuote();
+                }, 1000);
+                setTimeout(function() {
+                    fadeIn();
+                }, frequency / 3);
         }, frequency);
-        setTimeout(function() {
-            setInterval(function() {
-                fadeIn();
-            }, frequency);
-        }, frequency / 3);
     }
 
     $scope.$on('$viewContentLoaded', function() {
