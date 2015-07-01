@@ -59,17 +59,23 @@ angular.module('wolkidee.controllers').controller('HomeCtrl', function($window, 
 		$(window).resize(function(){
 			$scope.setContainerWidth();
 		});
-		$window.onload = function(){
-			console.log('ddoiudoahj');
-		};
-		$(window).load(function(){
-			console.log('window load');
-			swal.close();
-			done = true;
-			$scope.setContainerWidth();
-		});
 
 	});
+	$window.onload = function(){
+		console.log('window load');
+		swal.close();
+		done = true;
+		$scope.setContainerWidth();
+	};
+	function listen(evnt, elem, func) {
+	    if (elem.addEventListener)  // W3C DOM
+	        elem.addEventListener(evnt,func,false);
+	    else if (elem.attachEvent) { // IE DOM
+	         var r = elem.attachEvent("on"+evnt, func);
+	         return r;
+	    }
+	    else window.alert('I\'m sorry Dave, I\'m afraid I can\'t do that.');
+	}
 	
 	$scope.setContainerWidth = function(){
 		console.log('setContainerWidth');
