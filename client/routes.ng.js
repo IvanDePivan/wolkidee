@@ -87,7 +87,7 @@ angular.module("wolkidee").directive('modnav', function() {
   return {
     restrict: 'E',
     templateUrl: 'client/wolkidee/directives/navModerate.ng.html',
-  }
+  };
 });
 
 angular.module("wolkidee").directive('cards', function() {
@@ -95,7 +95,7 @@ angular.module("wolkidee").directive('cards', function() {
     restrict: 'E',
     transclude: true,
     templateUrl: 'client/wolkidee/directives/cards.ng.html',
-  }
+  };
 });
 
 angular.module("wolkidee").directive('card', function() {
@@ -103,5 +103,18 @@ angular.module("wolkidee").directive('card', function() {
     restrict: 'E',
     transclude: true,
     templateUrl: 'client/wolkidee/directives/card.ng.html',
-  }
+  };
+});
+
+angular.module('wolkidee').directive('onFinishRender', function ($timeout) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attr) {
+            if (scope.$last === true) {
+                $timeout(function () {
+                    scope.$emit('ngRepeatFinished');
+                });
+            }
+        }
+    };
 });
