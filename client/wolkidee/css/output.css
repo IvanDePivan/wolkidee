@@ -26,3 +26,13 @@
 	z-index:2;
 	clear:both;
 }
+
+h2.bigger-font {
+    font-size: 30px;
+}
+h4.bigger-font {
+    font-size: 25px;
+}
+p.bigger-font {
+    font-size: 20px;
+}

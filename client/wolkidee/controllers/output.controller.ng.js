@@ -12,7 +12,7 @@ angular.module('wolkidee.controllers').controller('OutputCtrl', function($scope,
     var newCount = newQuotes.length;
 
     $scope.outputCard = "#outputCardContainer";
-    $scope.quote = acceptedQuotes[randomNumber()];
+    //$scope.quote = acceptedQuotes[randomNumber()];
 
     function randomNumber(limit) {
     	var test = Math.floor(Math.random() * limit);
@@ -28,8 +28,16 @@ angular.module('wolkidee.controllers').controller('OutputCtrl', function($scope,
         if(newCount > 0){
            $scope.quote = newQuotes[randomNumber(newCount)]; 
            Quotes.update({"_id":$scope.quote._id}, {$set: {'shown': true}});
-        } else {
+        } else if(count > 0) {
             $scope.quote = acceptedQuotes[randomNumber(count)];
+        } else {
+            $scope.quote = {
+                name: 'Avans Hogeschool',
+                title: 'Voer je quote in bij de iPads',
+                quote: 'Je kunt je eigen quote uploaden voor dit jaarboek bij de iPad stands.',
+                shown: true,
+                image: 'http://i.imgur.com/swL1ZRDl.png'
+            };
         }
     }
 
@@ -71,6 +79,7 @@ angular.module('wolkidee.controllers').controller('OutputCtrl', function($scope,
                     nextQuote();
                 }, 1000);
                 setTimeout(function() {
+                    console.log($scope.quote);
                     fadeIn();
                 }, frequency / 3);
         }, frequency);
