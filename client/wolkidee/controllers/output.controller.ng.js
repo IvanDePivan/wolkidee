@@ -25,6 +25,7 @@ angular.module('wolkidee.controllers').controller('OutputCtrl', function($scope,
     }
 
     function nextQuote() {
+        delete $scope.quote;
         if(newCount > 0){
            $scope.quote = newQuotes[randomNumber(newCount)]; 
            Quotes.update({"_id":$scope.quote._id}, {$set: {'shown': true}});
@@ -64,7 +65,7 @@ angular.module('wolkidee.controllers').controller('OutputCtrl', function($scope,
 
     function resizeQuote(){
         var windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-        var height = $("#quoteContent").height();
+        var height = document.getElementById('quoteContent').offsetWidth;
         var newMaxHeight = windowHeight - height - 20;
         $(".card-image-output").css({ "max-height": newMaxHeight + 'px' });
     }
