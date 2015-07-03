@@ -21,18 +21,18 @@
 
 #outputCardContainer {
 	position:absolute;
-	width:400px;
+	width:600px;
 	height:50%;
 	z-index:2;
 	clear:both;
 }
 
 h2.bigger-font {
-    font-size: 30px;
+    font-size: 35px;
 }
 h4.bigger-font {
-    font-size: 25px;
+    font-size: 30px;
 }
 p.bigger-font {
-    font-size: 20px;
+    font-size: 25px;
 }

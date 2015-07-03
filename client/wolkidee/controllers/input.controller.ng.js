@@ -3,6 +3,7 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 	$scope.name = "";
 	$scope.title = "";
 	$scope.quote = "";
+	var maxLength = 200;
 	// $scope.stop;
 	$scope.academieInertObject = { name: "Academie" };
 	$scope.uploading = false;
@@ -30,9 +31,9 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 		inputId: "#quoteInput",
 		formGroupId: "#quoteFormGroup",
 		prettyName: "quote",
-		maxCharacters: "400",
+		maxCharacters: "" + maxLength,
 		defaultPlaceholder: "Je wens, bericht, anekdote of groet.",
-		errorPlaceholder: "De wens, bericht, anekdote of groet moet tussen 2 en 400 karakters bevatten!"
+		errorPlaceholder: "De wens, bericht, anekdote of groet moet tussen 2 en " + maxLength + " karakters bevatten!"
 	};
 
 	$scope.academies = $meteor.collection(Academies);
@@ -254,7 +255,7 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 
 	$scope.countChar = function() {
       var len = $scope.quote.length;
-      var value = 400 - len;
+      var value = maxLength - len;
       $('#charNum').text(value);
       if(value < 100 && value > -1 ){
       	if(($('#charNum').hasClass("label-primary") || $('#charNum').hasClass("label-danger"))){

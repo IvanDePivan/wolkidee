@@ -65,7 +65,7 @@ angular.module('wolkidee.controllers').controller('OutputCtrl', function($scope,
 
     function resizeQuote(){
         var windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-        var height = document.getElementById('quoteContent').offsetWidth;
+        var height = document.getElementById('quoteContent').offsetHeight;
         var newMaxHeight = windowHeight - height - 20;
         $(".card-image-output").css({ "max-height": newMaxHeight + 'px' });
     }
