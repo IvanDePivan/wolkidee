@@ -119,7 +119,7 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 					'thumbnail': Imgur.toThumbnail(result.link, Imgur.LARGE_THUMBNAIL),
 					'state': 'pending',
 					'academie': $scope.academie.name,
-					'shown': false
+					'views': 0
 				});
 			};
 			uploadToImgur($scope.chosenImage).then(successFunction, function(error){
@@ -151,7 +151,7 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 				'quote': $scope.quote,
 				'state': 'pending',
 				'academie': $scope.academie.name,
-				'shown': false
+				'views': 0
 			});
 		}
 	};

@@ -1,53 +1,68 @@
-angular.module('wolkidee.controllers').controller('OutputCtrl', function($scope, $meteor, $filter) {
+angular.module('wolkidee.controllers').controller('OutputCtrl', function($scope, $meteor, $filter, $stateParams) {
     var fadeInClasses = 'animated fadeInLeft';
     var fadeOutClasses = 'animated fadeOutRight';
     var hideClasses = 'hidden';
     var once = true;
     var frequency = 9000;
-
-    var acceptedQuotes = $filter('filter')($meteor.collection(Quotes), {'state': 'accepted'});
-    var newQuotes = $filter('filter')($meteor.collection(Quotes), {'state': 'accepted', 'shown': false});
-    
-    var count = acceptedQuotes.length;
-    var newCount = newQuotes.length;
-
+    var acceptedQuotes;
+    var offlineCounter = {'-1': Number.POSITIVE_INFINITY};
     $scope.outputCard = "#outputCardContainer";
-    //$scope.quote = acceptedQuotes[randomNumber()];
+    
+    if($stateParams.academie){
+        acceptedQuotes = $filter('filter')($meteor.collection(Quotes), {'state': 'accepted', 'academie': $stateParams.academie});
+    } else {
+        acceptedQuotes = $filter('filter')($meteor.collection(Quotes), {'state': 'accepted'});
+    }
+
+    var count = acceptedQuotes.length;
+
 
     function randomNumber(limit) {
-    	var test = Math.floor(Math.random() * limit);
-        return test;
+    	var result = Math.floor(Math.random() * limit);
+        return result;
     }
 
     function countQuotes(){
     	count = acceptedQuotes.length;
-        newCount = newQuotes.length;
     }
 
     function nextQuote() {
         delete $scope.quote;
-        if(newCount > 0){
-           $scope.quote = newQuotes[randomNumber(newCount)]; 
-           Quotes.update({"_id":$scope.quote._id}, {$set: {'shown': true}});
-        } else if(count > 0) {
-            $scope.quote = acceptedQuotes[randomNumber(count)];
+        if(count > 0) {
+            var lowest = {_id: '-1'};
+            var tmp;
+            for (var i=acceptedQuotes.length-1; i>=0; i--) {
+                tmp = acceptedQuotes[i];
+                if(!angular.isDefined(offlineCounter[tmp._id])){
+                    offlineCounter[tmp._id] = 0;
+                }
+                if (offlineCounter[tmp._id] < offlineCounter[lowest._id]) lowest = tmp;
+                // if (tmp.views < lowest.views) lowest = tmp;
+            }
+            offlineCounter[lowest._id]++;
+            console.log(offlineCounter[lowest._id]);
+            $scope.quote = lowest;
+            $scope.quote.views++;
+            Quotes.update({"_id":$scope.quote._id}, {$set: {'views': $scope.quote.views}});
         } else {
             $scope.quote = {
                 name: 'Avans Hogeschool',
                 title: 'Voer je quote in bij de iPads',
                 quote: 'Je kunt je eigen quote uploaden voor dit jaarboek bij de iPad stands.',
-                shown: true,
+                views: 1,
                 image: 'http://i.imgur.com/swL1ZRDl.png'
             };
         }
+        
     }
 
     function getAcceptedQuotes(){
-    	acceptedQuotes = $filter('filter')($meteor.collection(Quotes), {'state': 'accepted'});
-    }
+        if($stateParams.academie){
+            acceptedQuotes = $filter('filter')($meteor.collection(Quotes), {'state': 'accepted', 'academie': $stateParams.academie});
+        } else {
+    	   acceptedQuotes = $filter('filter')($meteor.collection(Quotes), {'state': 'accepted'}); 
+        }
 
-    function getNewQuotes(){
-        newQuotes = $filter('filter')($meteor.collection(Quotes), {'state': 'accepted', 'shown': false});
     }
 
     function fadeOut() {
@@ -75,7 +90,6 @@ angular.module('wolkidee.controllers').controller('OutputCtrl', function($scope,
                 fadeOut();
                 setTimeout(function(){
                     getAcceptedQuotes();
-                    getNewQuotes();
                     countQuotes();
                     nextQuote();
                 }, 1000);

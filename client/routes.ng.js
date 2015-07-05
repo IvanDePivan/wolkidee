@@ -38,6 +38,11 @@ angular.module("wolkidee").config(function($urlRouterProvider, $stateProvider, $
             templateUrl: 'client/wolkidee/views/output.ng.html',
             controller: 'OutputCtrl'
         })
+        .state('outputAcademie', {
+            url: '/output/:academie',
+            templateUrl: 'client/wolkidee/views/output.ng.html',
+            controller: 'OutputCtrl'
+        })
         .state('moderate', {
             url: '/moderate',
             templateUrl: 'client/wolkidee/views/fullscreen.ng.html',
