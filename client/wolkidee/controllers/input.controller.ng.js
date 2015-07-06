@@ -180,7 +180,7 @@ angular.module('wolkidee.controllers').controller('InputCtrl', function($scope, 
 		try {
 			Imgur.upload({
 				image: image,
-				apiKey: '7ef579444b40c32', //TODO IH: new api before release
+				apiKey: '1ba54467169c5b5', //TODO IH: new api before release
 			}, function(error, data){
 				if(error){
 					deferred.reject(error);
