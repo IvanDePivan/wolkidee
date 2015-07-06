@@ -68,20 +68,18 @@ angular.module('wolkidee.controllers').controller('NarrowCtrl', function($scope,
        var offsetLeft = $(".thumbnail").width();
        var leftPos = windowOffsetLeft - offsetLeft;
        $("#outputCardContainer").animate({opacity: 0, left: leftPos}, 1000, function(){
-            $("#outputCardContainer").addClass(hideClasses);
+            $("#outputCardContainer").css("opacity", 0);
             $("#outputCardContainer").css("left", 0);
        });
     }
 
     function fadeIn() {
-        $($scope.outputCard).removeClass(hideClasses);
         resizeQuote();
         var offsetLeft = $(".thumbnail").width() / 2;
         var windowOffsetLeft = Math.max(document.documentElement.clientWidth, window.innerWidth || 0) / 2
         var leftPos = windowOffsetLeft - offsetLeft;
         centerNarrow(".centerThisDivRightHere", ".thumbnail");
         $("#outputCardContainer").animate({opacity: 1, left: leftPos}, 1000, function(){
-            $("#outputCardContainer").removeClass(hideClasses);
             $("#outputCardContainer").css("opacity", 1);
        });
     }
