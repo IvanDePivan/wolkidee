@@ -1,6 +1,4 @@
 angular.module('wolkidee.controllers').controller('NarrowCtrl', function($scope, $meteor, $filter, $stateParams) {
-    var fadeInClasses = '';
-    var fadeOutClasses = 'hidden';
     var hideClasses = 'hidden';
     var once = true;
     var frequency = 9000;
@@ -66,16 +64,26 @@ angular.module('wolkidee.controllers').controller('NarrowCtrl', function($scope,
     }
 
     function fadeOut() {
-        $($scope.outputCard).removeClass(fadeInClasses);
-        $($scope.outputCard).addClass(fadeOutClasses);
+       var windowOffsetLeft = Math.max(document.documentElement.clientWidth, window.innerWidth || 0)
+       var offsetLeft = $(".thumbnail").width();
+       var leftPos = windowOffsetLeft - offsetLeft;
+       $("#outputCardContainer").animate({opacity: 0, left: leftPos}, 1000, function(){
+            $("#outputCardContainer").addClass(hideClasses);
+            $("#outputCardContainer").css("left", 0);
+       });
     }
 
     function fadeIn() {
         $($scope.outputCard).removeClass(hideClasses);
         resizeQuote();
-        center(".thumbnail");
-        $($scope.outputCard).removeClass(fadeOutClasses);
-        $($scope.outputCard).addClass(fadeInClasses);
+        var offsetLeft = $(".thumbnail").width() / 2;
+        var windowOffsetLeft = Math.max(document.documentElement.clientWidth, window.innerWidth || 0) / 2
+        var leftPos = windowOffsetLeft - offsetLeft;
+        centerNarrow(".centerThisDivRightHere", ".thumbnail");
+        $("#outputCardContainer").animate({opacity: 1, left: leftPos}, 1000, function(){
+            $("#outputCardContainer").removeClass(hideClasses);
+            $("#outputCardContainer").css("opacity", 1);
+       });
     }
 
     function resizeQuote(){
@@ -84,6 +92,7 @@ angular.module('wolkidee.controllers').controller('NarrowCtrl', function($scope,
         var newMaxHeight = windowHeight - height - 20;
         $(".card-image-output").css({ "max-height": newMaxHeight + 'px' });
     }
+
     var looptimes = 0;
     function fadeLoop() {
         setInterval(function() {

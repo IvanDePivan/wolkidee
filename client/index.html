@@ -21,6 +21,14 @@
 	        center.css("left", leftPos + "px");
 	        center.css("top", topPos + "px");
 	    }
+
+	    function centerNarrow(toCenterDiv,sizeDiv){
+	    	var center = $(toCenterDiv);
+	        var offsetTop = $(sizeDiv).height() / 2;
+	        var windowOffsetTop = Math.max(document.documentElement.clientHeight, window.innerHeight || 0) / 2
+	        var topPos = windowOffsetTop - offsetTop;
+	        center.css("top", topPos + "px");
+	    }
 	    function imgError(image) {
 	        // image.onerror = null;
 	        // console.log('imgError');

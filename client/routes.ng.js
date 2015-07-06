@@ -45,12 +45,12 @@ angular.module("wolkidee").config(function($urlRouterProvider, $stateProvider, $
         })
         .state('outputnarrow', {
             url: '/narrow',
-            templateUrl: 'client/wolkidee/views/output.ng.html',
+            templateUrl: 'client/wolkidee/views/narrow.ng.html',
             controller: 'NarrowCtrl'
         })
         .state('outputnarrowAcademie', {
             url: '/narrow/:academie',
-            templateUrl: 'client/wolkidee/views/output.ng.html',
+            templateUrl: 'client/wolkidee/views/narrow.ng.html',
             controller: 'NarrowCtrl'
         })
         .state('moderate', {
