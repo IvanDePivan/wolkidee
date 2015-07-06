@@ -8,10 +8,10 @@ angular.module('wolkidee.controllers').controller('ModerateCtrl', function($scop
 
 	Quotes.find().observeChanges({
 		changed: function (id, fields) {
-		console.log('changed: ' + id);
+		// console.log('changed: ' + id);
 		// $scope.quotes = $filter('filter')($scope.allquotes, {'state': 'accepted', 'academie': $scope.academie.name});
 		$timeout(function(){
-				console.log('arrange');
+				// console.log('arrange');
 				createIsotope();
 		}, 1000);
 		}

@@ -1,6 +1,6 @@
-angular.module('wolkidee.controllers').controller('OutputCtrl', function($scope, $meteor, $filter, $stateParams) {
-    var fadeInClasses = 'animated fadeInLeft';
-    var fadeOutClasses = 'animated fadeOutRight';
+angular.module('wolkidee.controllers').controller('NarrowCtrl', function($scope, $meteor, $filter, $stateParams) {
+    var fadeInClasses = '';
+    var fadeOutClasses = 'hidden';
     var hideClasses = 'hidden';
     var once = true;
     var frequency = 9000;
@@ -28,7 +28,6 @@ angular.module('wolkidee.controllers').controller('OutputCtrl', function($scope,
 
     function nextQuote() {
         delete $scope.quote;
-        console.log(count);
         if(count > 0) {
             var lowest = {_id: '-1'};
             var tmp;

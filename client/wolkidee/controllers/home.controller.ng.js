@@ -1,7 +1,7 @@
 angular.module('wolkidee.controllers').controller('HomeCtrl', function($window, $scope, $meteor, $state, $filter, $stateParams, $timeout){
 
 	function createIsotope(){
-		console.log('createIsotope');
+		// console.log('createIsotope');
 		var elem = document.querySelector('.grid');
 		$scope.iso = new Isotope( elem, {
 			itemSelector: '.grid-item',
@@ -32,12 +32,12 @@ angular.module('wolkidee.controllers').controller('HomeCtrl', function($window, 
 
 		Quotes.find().observeChanges({
 			changed: function (id, fields) {
-        		console.log('changed: ' + id);
+        		// console.log('changed: ' + id);
        			$scope.quotes = $filter('filter')($scope.allquotes, {'state': 'accepted', 'academie': $scope.academie.name});
         		$timeout(function(){
         			if($scope.iso){
         				createIsotope();
-        				console.log('arrange');
+        				// console.log('arrange');
 	        			}
         		}, 1000);
 			}
@@ -48,7 +48,7 @@ angular.module('wolkidee.controllers').controller('HomeCtrl', function($window, 
 	
   	var once = true;
     $scope.$on('ngRepeatFinished', function(ngRepeatFinishedEvent) {
-    	console.log('ngRepeatFinished');
+    	// console.log('ngRepeatFinished');
   	    if(once){
 	  		once = false;
 	  		createIsotope();
@@ -62,7 +62,7 @@ angular.module('wolkidee.controllers').controller('HomeCtrl', function($window, 
 
 	});
 	$window.onload = function(){
-		console.log('window load');
+		// console.log('window load');
 		swal.close();
 		done = true;
 		$scope.setContainerWidth();
@@ -78,7 +78,7 @@ angular.module('wolkidee.controllers').controller('HomeCtrl', function($window, 
 	}
 	
 	$scope.setContainerWidth = function(){
-		console.log('setContainerWidth');
+		// console.log('setContainerWidth');
 		if($scope.iso){
 			$scope.iso.arrange();
 			$('.grid').css('width', 'auto'); //reset
