@@ -53,7 +53,9 @@ angular.module('wolkidee.controllers').controller('ModerateCtrl', function($scop
 	}
 	
 	$(window).load(function() {
-		$scope.iso.arrange();
+		if($scope.iso){
+			$scope.iso.arrange();
+		} 
 	});
 
 	function isoArrange(quote){
@@ -64,10 +66,31 @@ angular.module('wolkidee.controllers').controller('ModerateCtrl', function($scop
 		  	layoutMode: 'masonry'
 		});
 	}
+	$(document).unbind('keyup');
+
+	$(document).bind('keyup', 'a', function(){
+		if($state.current.name === 'moderate.authenticated'){
+			var quotes = $filter('filter')($scope.quotes, {'state': 'pending'});
+			if(quotes && quotes[0]){
+				console.log(quotes[0]);
+				$scope.accept(quotes[0]);
+			}
+		}
+	});
+
+	$(document).bind('keyup', 'd', function(){
+		if($state.current.name === 'moderate.authenticated'){
+			var quotes = $filter('filter')($scope.quotes, {'state': 'pending'});
+			if(quotes && quotes[0]){
+				console.log(quotes[0]);
+				$scope.decline(quotes[0]);
+			}
+		}
+	});
 	
 	$scope.accept = function(quote){
+		//$timeout(isoArrange(quote), $scope.updateAfter);
 		Quotes.update({"_id":quote._id}, {$set: {"state": "accepted"}});
-		$timeout(isoArrange(quote), $scope.updateAfter);
 		swal({ title: "Geaccepteerd!",
 			   showConfirmButton: false,
 			   timer: $scope.standardTimeout,
@@ -75,8 +98,8 @@ angular.module('wolkidee.controllers').controller('ModerateCtrl', function($scop
 	};
 
 	$scope.decline = function(quote){
+		//$timeout(isoArrange(quote), $scope.updateAfter);
 		Quotes.update({"_id":quote._id}, {$set: {"state": "rejected"}});
-		$timeout(isoArrange(quote), $scope.updateAfter);
 		swal({ title: "Geweigerd!",
 			   showConfirmButton: false,
 			   timer: $scope.standardTimeout,
